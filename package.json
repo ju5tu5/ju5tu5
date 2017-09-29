@@ -1,0 +1,19 @@
+{
+  "name": "ju5tu5",
+  "version": "1.0.0",
+  "description": "It's a website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ju5tu5/ju5tu5.git"
+  },
+  "author": "Justus Sturkenboom <justus@ju5tu5.nl> (http://ju5tu5.nl)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ju5tu5/ju5tu5/issues"
+  },
+  "homepage": "http://ju5tu5.nl"
+}
