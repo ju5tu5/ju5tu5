@@ -11,6 +11,7 @@
   "devDependencies": {
     "browserify": "^14.4.0",
     "cssnano": "^3.10.0",
+    "eslint-plugin-import": "^2.7.0",
     "esmangle": "^1.0.1",
     "fingerprintjs2": "^1.5.1",
     "hast-util-select": "^1.0.0",
