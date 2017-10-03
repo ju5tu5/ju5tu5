@@ -1,2 +1,13 @@
-# ju5tu5
-It's a website
+# Le moi, Justus
+
+Welkom op ju5tu5.nl, een site waarop ik dingen publiceer.  Als je contact met
+mij zoekt kan dat middels [justus@ju5tu5.nl](mailto:justus@ju5tu5.nl) als het
+om privé aangelegenheden gaat of middels [j.p.sturkenboom@hva.nl](mailto:j.p.sturkenboom@hva.nl)
+voor werk gerelateerde correspondentie.  Als je de noodzaak voelt me in persoon
+te spreken dan ben ik te vinden op aarde.
+
+## Ik ben sociaal en hier is het bewijs
+
+[https://twitter.com/ju5tu5](twitter.com/ju5tu5)
+[https://github.com/ju5tu5](github.com/ju5tu5)
+[mailto:justus@ju5tu5.nl](justus@ju5tu5.nl)
