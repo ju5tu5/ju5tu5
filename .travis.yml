@@ -5,6 +5,7 @@ deploy:
   local_dir: static
   target_branch: master
   skip_cleanup: true
+  github_token: $GITHUB_TOKEN
   email: justus@ju5tu5.nl
   name: Justus Sturkenboom
   on:
