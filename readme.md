@@ -8,6 +8,6 @@ te spreken dan ben ik te vinden op aarde.
 
 ## Ik ben sociaal en hier is het bewijs
 
-[https://twitter.com/ju5tu5](twitter.com/ju5tu5)
-[https://github.com/ju5tu5](github.com/ju5tu5)
-[mailto:justus@ju5tu5.nl](justus@ju5tu5.nl)
+[twitter.com/ju5tu5](https://twitter.com/ju5tu5)
+[github.com/ju5tu5](https://github.com/ju5tu5)
+[justus@ju5tu5.nl](mailto:justus@ju5tu5.nl)
