@@ -2,7 +2,7 @@
 
 var vfile = require('to-vfile')
 var report = require('vfile-reporter')
-var h = require('hastscript')
+// var h = require('hastscript')
 var select = require('hast-util-select').select
 var unified = require('unified')
 var markdown = require('remark-parse')
@@ -12,7 +12,7 @@ var remark2rehype = require('remark-rehype')
 var doc = require('rehype-document')
 var slug = require('rehype-slug')
 var min = require('rehype-preset-minify')
-var favicon = require('rehype-prevent-favicon-request')
+// var favicon = require('rehype-prevent-favicon-request')
 var html = require('rehype-stringify')
 var pack = require('./package.json')
 
@@ -27,10 +27,9 @@ unified()
     js: 'index.js'
   })
   .use(slug)
-  .use(nojs)
-  .use(avatar)
+  // .use(nojs)
   .use(min)
-  .use(favicon)
+  // .use(favicon)
   .use(html)
   .process(vfile.readSync('readme.md'), function (err, file) {
     console.error(report(err || file))
@@ -60,14 +59,5 @@ function nojs () {
       properties: {},
       children: [{type: 'text', value: script}]
     })
-  }
-}
-
-function avatar () {
-  return transformer
-  function transformer (tree) {
-    select('body', tree).children.unshift(h('figure', [
-      h('img', {src: './pinguin.png'})
-    ]))
   }
 }
