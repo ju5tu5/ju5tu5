@@ -2,8 +2,9 @@
 
 var vfile = require('to-vfile')
 var report = require('vfile-reporter')
-// var h = require('hastscript')
-// var select = require('hast-util-select').select
+
+var h = require('hastscript')
+var select = require('hast-util-select').select
 
 var unified = require('unified')
 var markdown = require('remark-parse')
@@ -65,11 +66,11 @@ unified()
 //   }
 // }
 //
-function header() {
-  return transformer;
-  function transformer(tree) {
+function header () {
+  return transformer
+  function transformer (tree) {
     select('body', tree).children.unshift(h('header', [
       h('img', {src: './logo.png'})
-    ]));
+    ]))
   }
 }
