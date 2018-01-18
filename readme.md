@@ -10,4 +10,4 @@ te spreken dan ben ik te vinden op aarde.
 
 *   [twitter.com/ju5tu5](https://twitter.com/ju5tu5)
 *   [github.com/ju5tu5](https://github.com/ju5tu5)
-*   <mailto:justus@ju5tu5.nl>
+*   [linkedin.com/in/ju5tu5](https://www.linkedin.com/in/ju5tu5/)
