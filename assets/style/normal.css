@@ -7,7 +7,11 @@
 }
 body {
 	background: #c2c2c2;
-	padding: 1ch;
+
+    max-width: 40em;
+    margin: calc(2em + 2ex) auto;
+    padding: 2em;
+    word-break: break-word;
 }
 div {
 	padding: 1ch;
@@ -71,3 +75,25 @@ footer {
 	flex-flow: row wrap;
 	justify-content: space-between;
 }
+
+@media (min-width: 40em) and (min-height: 20em) {
+    body {
+      /* Go all Tschichold when supported */
+      padding: calc(2em + 2ex);
+      margin: 11.1vh 22.2vw 22.2vh 11.1vw;
+    }
+  }
+  
+  @media (min-width: 70em) and (min-height: 35em) {
+    body {
+      /* Go all Tschichold when supported */
+      max-width: 70em;
+      padding: 11.1vh 22.2vw 22.2vh 11.1vw;
+    }
+  }
+  
+  @media (min-width: 90em) {
+    body {
+      max-width: 66.6vw;
+    }
+  }
