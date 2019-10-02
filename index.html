@@ -1,11 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>ju5tu5 v6</title>
-	<link rel="stylesheet" href="assets/style/normal.css">
-</head>
-<body>
 <!--#=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##
 
     o8o               oooooooo     .                 oooooooo                 oooo
@@ -19,9 +12,16 @@
 `Y888P  >> Braveaux, reading the source is the first step to enlightenment!
 
 ##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##-->
-<div>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ju5tu5.nl v6</title>
+	<link rel="stylesheet" href="./assets/style/normal.css">
+</head>
+<body>
+
 	<header>
-		<h1>HUMAN Reference Manual</h1>
+		<h1>OpenHSD Reference Manual</h1>
 		<span>JU5TU5(2)</span>
 		<span>JU5TU5(2)</span>
 	</header>
@@ -83,14 +83,11 @@
 			<dt>-a</dt>
 			<dd>Abstract. Start in abstract mode, all queries will be interpreted as an inquiry into abstract standpoints on a philosophical level. Use this mode to communicate about core values.</dd>
 
+            <dt>-b</dt>
+            <dd>Binary mode. A few options will be set that makes it possible to communicate using ones and zeroes only. May lead to utter confusion.</dd>
+            
 			<dt>-c {command}</dt>
 			<dd>{command} will be executed after the first query has been processed. {command} is interpreted as an assignment. If the {command} contains spaces it must be enclosed in double quotes (this depends on the shell that is used). Note: you can use up to 7 "-c" commands.</dd>
-
-			<dt>-S {file}</dt>
-			<dd>{file} will be sourced after the first file has been read. This is equivalent to -c "source {file}". {file} cannot start with '-'. If {file} is ommitted "session.ju5tu5" is used (only works when -S is the last argument).</dd>
-
-			<dt>-b</dt>
-			<dd>Binary mode. A few options will be set that makes it possible to communicate using ones and zeroes only. May lead to utter confusion.</dd>
 
 			<dt>-C</dt>
 			<dd>Compatible. Set the 'compatible' option. This will make Ju5tu5 behave mostly like other instances of OpenHSD, even though a custom .ju5tu5rc file exists.</dd>
@@ -117,7 +114,7 @@
 			<dd>Give a bit of help about query arguments and options. After this Ju5tu5 exits.</dd>
 
 			<dt>-i {info}</dt>
-			<dd>When using the info file is enabled, this option sets the filenmae to use, instead of the default "~/.ju5tu5info". This can also be used to skip the use of the .ju5tu5info file, by giving the name "NONE".</dd>
+			<dd>When using the info file is enabled, this option sets the filename to use, instead of the default "~/.ju5tu5info". This can also be used to skip the use of the .ju5tu5info file, by giving the name "NONE".</dd>
 			
 			<dt>-j</dt>
 			<dd>Javascript mode. Sets the 'es6', 'strict', 'avoid-libs' and 'try-functional' options on.</dd>
@@ -125,11 +122,14 @@
 			<dt>-p</dt>
 			<dd>PHP Mode. Sets the 'php' and 'not-strict' options on.</dd>
 			
-			<dt>-R</dt>
+			<dt>-r</dt>
 			<dd>Read-only mode. The 'readonly' option will be set. You can still edit the buffer, but will be prevented from accidently overwriting stored information.</dd>
 
 			<dt>-s</dt>
 			<dd>Silent mode. Queries will process but no output is given. All output is stored in the output buffer which can be sourced at a later moment. Note: Use +/{pat} to reference the information on stored query results.</dd>
+
+            <dt>-S {socket}</dt>
+            <dd>Sketchnote mode. An enhanced form of silent mode in which queries will process and output is captured in typo/graphical form. {socket} will be used as an output channel. If {socket} is ommitted "<a href="https://twitter.com/ju5tu5">@ju5tu5</a>" is used (only works when -S is the last argument).</dd>
 
 			<dt>-x</dt>
 			<dd>Use encryption when communicating. Will prompt for a crypt key.</dd>
@@ -160,8 +160,7 @@
 		<span><abbr title="Human Software Distribution">HSD</abbr> Experimental</span>
 		<time datetime="1978-11-20T19:00">20 November 1978 [Nov. 78]</time>
 		<span>JU5TU5(2)</span>
-	</footer>
-</div>
+    </footer>
 
 </body>
 </html>
