@@ -15,29 +15,27 @@ body {
 
 @media (min-width: 40em) and (min-height: 20em) {
     body {
-        /* padding: calc(2em + 2ex); */
-        /* margin: 11.1vh 22.2vw 22.2vh 11.1vw; */
         font-size: 1.2em;
     }
 }
-/*
+
 @media (min-width: 70em) and (min-height: 35em) {
     body {
-        max-width: 70em;
-        padding: 11.1vh 22.2vw 22.2vh 11.1vw;
+        margin-top: 11.1vh;
+        margin-left: 22.2vw;
+        font-size: 1.4em;
     }
 }
 
 @media (min-width: 90em) {
     body {
-        max-width: 66.6vw;
+        font-size: 1.6em;
     }
 }
-*/
 
 * {
     margin: 0; padding: 0;
-    color: #fff;
+    color: #f0f0f0;
     font-weight: normal;
     font-size: 1em;
     line-height: calc(1em + 1ex);
@@ -110,4 +108,48 @@ footer {
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-between;
+}
+
+/* GITHUB CORNER */
+.github {
+    height: 80px;
+    width: 80px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    transform: translateZ(0);
+}
+.github .octo-arm {
+    transform-origin: 130px 106px;
+}
+.github:hover .octo-arm {
+    animation: octocat-wave 560ms ease-in-out
+}
+
+@keyframes octocat-wave {
+
+    0%,
+    100% {
+        transform: rotate(0)
+    }
+
+    20%,
+    60% {
+        transform: rotate(-25deg)
+    }
+
+    40%,
+    80% {
+        transform: rotate(10deg)
+    }
+}
+
+@media (max-width:500px) {
+    .github:hover .octo-arm {
+        animation: none
+    }
+
+    .github .octo-arm {
+        animation: octocat-wave 560ms ease-in-out
+    }
 }
