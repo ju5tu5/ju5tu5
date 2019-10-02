@@ -21,8 +21,6 @@ body {
 
 @media (min-width: 70em) and (min-height: 35em) {
     body {
-        margin-top: 11.1vh;
-        margin-left: 22.2vw;
         font-size: 1.4em;
     }
 }
