@@ -131,7 +131,7 @@ blockquote cite {
 
 /* Console */
 section.console {
-  transform: translateX(-.1rem) rotate(-2deg);
+  transform: translateX(-.1rem) rotate(1deg);
   border-radius: 1rem;
   height: 20rem;
 }
