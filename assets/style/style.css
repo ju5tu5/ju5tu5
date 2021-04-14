@@ -8,12 +8,6 @@
   --termcolor: #424242ca;
 }
 
-/* :root {
-  --bgcolor: #f6f2ee;
-  --fgcolor: #704214;
-  --hlcolor: red;
-} */
-
 body {
   background-color: var(--bgcolor);
   background-image: radial-gradient(var(--fgcolor) 25%, transparent 26%),
@@ -156,7 +150,7 @@ section.console::before,
 section.console::after {
   position: relative;
   display: block;
-  content: '';
+  content: '+';
   width: .7rem;
   height: .7rem;
   left: .4rem;
@@ -164,21 +158,31 @@ section.console::after {
   border-radius: .35rem;
   z-index: 99;
   background-color: red;
+  color: transparent;
+  line-height: .7rem;
+  text-align: center;
+  transform-origin: center;
+  font-size: .9rem;
+}
+section.console::before {
+  transform: rotate(-45deg);
 }
 section.console::after {
-  top: -21.4em;
+  content: '-';
+  top: -21.4rem;
   left: 1.4rem;
   background-color: orange;
 }
 section.console textarea {
   background: var(--termcolor);
   resize: none;
-  padding: 0;
+  padding: .1rem;
   width: 100%;
   height: 100%;
   color: var(--bgcolor);
   font-family: monospace;
   text-align: left;
+  outline: none !important;
 }
 
 footer {
@@ -219,24 +223,6 @@ article strong {
     font-weight: normal;
     white-space: nowrap;
 }
-/* 
-article strong::before,
-article strong::after {
-  content:"";
-  position:absolute;
-  left:0;
-  top:0;
-  z-index:-1;
-  border-bottom: 2px solid var(--hlcolor);
-  width:100%;
-  height:1.2em;
-  opacity:0.7;
-  transform:rotate(2deg);
-}
-article strong::after {
-  transform-origin: 0 0;
-  transform:rotate(-1deg);
-} */
 
 article strong::before,
 article strong::after {
