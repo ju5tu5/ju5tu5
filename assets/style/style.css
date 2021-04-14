@@ -8,7 +8,20 @@
   --termcolor: #424242ca;
 }
 
+/*******************************************************************************
+  _ __  __ _(_)_ _   | |__ _ _  _ ___ _  _| |_  I created a 
+ | '  \/ _` | | ' \  | / _` | || / _ \ || |  _|
+ |_|_|_\__,_|_|_||_| |_\__,_|\_, \___/\_,_|\__|
+*****************************|__/**********************************************/
 body {
+  display: grid;
+  grid: auto-flow / 7fr 18fr;
+  justify-content: space-between;
+  align-content: space-between;
+
+  padding: 1rem;
+  padding-top: 4rem;
+  
   background-color: var(--bgcolor);
   background-image: radial-gradient(var(--fgcolor) 25%, transparent 26%),
   radial-gradient(var(--fgcolor) 25%, transparent 26%);
@@ -17,44 +30,48 @@ body {
 
   color: var(--fgcolor);
   font-family: 'Vollkorn', serif;
-
-  display: grid;
-  padding: 1rem;
-  padding-top: 4rem;
-  grid: auto-flow / 28fr 72fr;
-  justify-content: space-between;
-  align-content: space-between;
 }
-
-/****************
-* Main layout 
-****************/
-
 header article,
 header nav,
 main article,
 footer {
-  border: .15em solid var(--fgcolor);
-  background: var(--bgcolor);
   margin: 1rem;
   padding: 1rem;
+  border: .15em solid var(--fgcolor);
+  background: var(--bgcolor);
 }
-
 header h1 {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   margin-top: -6rem;
-  font-size: 10rem;
-  font-weight: 600;
-  color: var(--bgcolor);
   z-index: 0;
   transform: rotate(-3deg);
   overflow: hidden;
+  
+  font-size: 10rem;
+  font-weight: 600;
+  color: var(--bgcolor);
+}
+footer {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  border-top-right-radius: 1em;
+  transform: rotate(-2deg);
+}
+footer p span {
+  display: inline-block;
+  padding-top: .05rem;
+  transform-origin: center;
+  transform: rotate(180deg);
 }
 
-/* Item rotation */
+/*******************************************************************************
+ (_) |_ ___ _ __    _ _ ___| |_ __ _| |_(_)___ _ _   I tried to create an effect
+ | |  _/ -_) '  \  | '_/ _ \  _/ _` |  _| / _ \ ' \  to randomly rotate items on
+ |_|\__\___|_|_|_| |_| \___/\__\__,_|\__|_\___/_||_| the site based on 5 rules.
+*******************************************************************************/
 header nav {
   transform: translateX(.1rem) rotate(-1deg);
   border-top-right-radius: 1rem;
@@ -104,7 +121,11 @@ article:nth-child(25) {
   transform: translateX(.3rem) rotate(-1deg);
 }
 
-/* Quotes */
+/*******************************************************************************
+  __ _ _  _ ___| |_ ___ ___
+ / _` | || / _ \  _/ -_|_-<
+ \__, |\_,_\___/\__\___/__/
+****|_|************************************************************************/
 blockquote {
   margin: 2rem;
 }
@@ -129,7 +150,11 @@ blockquote cite {
   white-space: nowrap;
 }
 
-/* Console */
+/*******************************************************************************
+  __ ___ _ _  ______| |___ 
+ / _/ _ \ ' \(_-< _ \ / -_)
+ \__\___/_||_/__|___/_\___|
+*******************************************************************************/
 section.console {
   transform: translateX(-.1rem) rotate(1deg);
   border-radius: 1rem;
@@ -185,33 +210,24 @@ section.console textarea {
   outline: none !important;
 }
 
-footer {
-  grid-column-start: 1;
-  grid-column-end: 3;
-  border-top-right-radius: 1em;
-  transform: rotate(-2deg);
-}
-footer p span {
-  display: inline-block;
-  padding-top: .05rem;
-  transform-origin: center;
-  transform: rotate(180deg);
-}
-
-/****************
-* Typography 
-****************/
+/*******************************************************************************
+ | |_ _  _ _ __  ___  __ _ _ _ __ _ _ __| |_ _  _ 
+ |  _| || | '_ \/ _ \/ _` | '_/ _` | '_ \ ' \ || |
+  \__|\_, | .__/\___/\__, |_| \__,_| .__/_||_\_, |
+******|__/|_|********|___/*********|_|*******|__/******************************/
 h2,
 h3 {
  font-weight: 600;
  font-size: 1.2rem;
- margin-bottom: .2rem;
+ margin-bottom: .4rem;
 }
 h3 {
   font-size: 1.1rem;
   margin-bottom: .2rem;
 }
-
+article h2:first-of-type {
+  margin-top: 0;
+}
 article p {
   line-height: 1.5em;
 }
@@ -219,11 +235,10 @@ article p + p {
   margin-top: .6em;
 }
 article strong {
-    position:relative;
-    font-weight: normal;
-    white-space: nowrap;
+  position:relative;
+  font-weight: normal;
+  white-space: nowrap;
 }
-
 article strong::before,
 article strong::after {
   content:"";
@@ -247,7 +262,6 @@ article strong::after {
   border-top-color:transparent;
   transform:rotate(-1deg);
 } 
-
 a {
   color: var(--fgcolor);
   text-decoration: underline;
@@ -257,11 +271,76 @@ a {
   text-decoration-skip-ink: auto;
 }
 
+/*******************************************************************************
+  _ __  __ _ _ _    _ __  __ _ __ _ ___ 
+ | '  \/ _` | ' \  | '_ \/ _` / _` / -_)
+ |_|_|_\__,_|_||_| | .__/\__,_\__, \___|
+*******************|_|********|___/********************************************/
+article.manpage {
+  transform: translateX(-3rem) rotate(1.5deg);
+  border-top-right-radius: 1rem;
+}
+.manpage div {
+  display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+}
+.manpage div:first-of-type span:first-of-type {
+  order: 1;
+}
+.manpage div:first-of-type h2 {
+  margin-top: 0;
+  order: 2;
+}
+.manpage div:first-of-type span:last-of-type {
+  order: 3;
+}
+.manpage h2,
+.manpage p,
+.manpage ul,
+.manpage dl  {
+  margin-top: calc(1em + 1ex);
+  margin-bottom: calc(1em + 1ex);
+}
+.manpage p,
+.manpage ul,
+.manpage dl {
+  margin-left: calc(1em + 1ex);
+  margin-right: calc(1em + 1ex);
+  text-align: justify;
+  list-style: none;
+}
+.manpage p + ul {
+  margin-left: calc(2em + 2ex);
+}
+.manpage dl {
+  display: grid;
+  grid-template-columns: 1fr 3.18fr;
+}
+.manpage dt,
+.manpage dd {
+	margin-top: calc(1em + 1ex);
+}
+
+/*******************************************************************************
+  __(_)______   __ _ __| |(_)_  _ __| |_ _ __  ___ _ _| |_ ___
+ (_-< |_ / -_) / _` / _` || | || (_-<  _| '  \/ -_) ' \  _(_-<
+ /__/_/__\___| \__,_\__,_|/ |\_,_/__/\__|_|_|_\___|_||_\__/__/
+************************|__/***************************************************/
 @media screen and (max-width: 50rem) {
   body {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+  article.manpage {
+    transform: translateX(0) rotate(0);
+    border-top-right-radius: 1rem;
+  }
+  footer {
+    width: 100%;
+    margin: 1rem;
+    padding: 1rem;
   }
 }
 
