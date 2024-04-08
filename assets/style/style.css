@@ -1,7 +1,9 @@
 :root {
-  --bgcolor: #ffe6f2;
-  --fgcolor: #0042d0;
-  --hlcolor: red;
+  /* --bgcolor: #ffe6f2; */
+  /* --fgcolor: #0042d0; */
+  --bgcolor: white;
+  --fgcolor: black;
+
   --termcolor: #424242ca;
   --gap: 1rem;
 }
@@ -264,11 +266,21 @@ div#grid {
 ****|_|************************************************************************/
 blockquote {
   margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(black 15%, transparent 16%), radial-gradient(black 15%, transparent 16%);
+  background-size: 8px 8px;
+  background-position: 0 0, 4px 4px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
 }
 blockquote p {
-  margin-bottom: 0.5rem;
+  margin: 0;
+  background: var(--bgcolor);
   text-wrap: balance;
-  font-size: 2rem;
+  font-size: 1.9rem;
 }
 blockquote p::before {
   content: '“';
@@ -277,8 +289,10 @@ blockquote p::after {
   content: '„';
 }
 blockquote cite {
+  padding-top: 0.5rem;
   font-size: 1rem;
   white-space: nowrap;
+  background: var(--bgcolor);
 }
 
 /*******************************************************************************

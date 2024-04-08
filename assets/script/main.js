@@ -1,23 +1,34 @@
-'use strict'
-
-const customStyleElement = document.head.appendChild(Object.assign(document.createElement('style'), { textContent: getItem('personalStyle') }))
+const localStorageItemName = 'personalStyle'
+const personalStyle = getOrCreateLocalStorageItem(localStorageItemName) || ''
+const personalStyleElement = createAndReturnStyleElement(personalStyle)
 const editor = document.querySelector('section.console textarea')
 
-if (editor !== null) {
-  editor.value = getItem('personalStyle')
-  editor.addEventListener('input', () => {
-    window.localStorage.setItem('personalStyle', editor.value)
-    customStyleElement.textContent = editor.value
-  })
+editor.value = personalStyle
+editor.addEventListener('input', () => {
+  localStorage.setItem(localStorageItemName, editor.value)
+  personalStyleElement.textContent = editor.value
+})
+
+function getOrCreateLocalStorageItem(itemName) {
+  return localStorage.getItem(itemName) || localStorage.setItem(itemName, '')
 }
 
-function getItem (item) {
-  if (window.localStorage.getItem(item) === null) {
-    window.localStorage.setItem(item, '')
+function createAndReturnStyleElement(stylesheet) {
+  return document.head.appendChild(
+    Object.assign(document.createElement('style'), {
+      textContent: stylesheet,
+    })
+  )
+}
+
+// extend all items in main with the inViewport() function
+Array.from(document.querySelectorAll('main > *')).map((element) => {
+  element.inViewport = (partial = false) => {
+    const { top, left, bottom, right } = element.getBoundingClientRect()
+    const { innerHeight, innerWidth } = window
+    return partial
+      ? ((top > 0 && top < innerHeight) || (bottom > 0 && bottom < innerHeight)) &&
+          ((left > 0 && left < innerWidth) || (right > 0 && right < innerWidth))
+      : top >= 0 && left >= 0 && bottom <= innerHeight && right <= innerWidth
   }
-  return window.localStorage.getItem(item)
-}
-
-function customStyleSwitch () {
-  window.localStorage.setItem('usePersonalStyle', !(getItem('usePersonalStyle') === 'true'))
-}
+})

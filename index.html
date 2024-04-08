@@ -19,6 +19,7 @@
     <title>ju5tu5.nl v8.0.0</title>
     <link rel="shortcut icon" href="./favicon.ico" />
     <link rel="stylesheet" href="./assets/style/style.css" />
+    <script src="/assets/script/main.js" defer></script>
   </head>
   <body id="entrance">
     <header>
@@ -70,9 +71,13 @@
       </article>
 
       <article id="garden">
-        <h2>This website is my digital garden...</h2>
-        <p>...but i'm a lousy gardener spending all my time on other projects.</p>
-        <p>I'd like to take some time to explain what a digital garden is.</p>
+        <h2>This website is a digital garden...</h2>
+        <p>
+          ...but i'm a lousy gardener spending all my time on <a href="https://github.com/ju5tu5/">other projects</a>.
+        </p>
+        <p>
+          I'd like to take some time to explain what a digital garden is... so you can expect that here in a while...
+        </p>
         <p>
           I've got a few things going so you can check out how to work with me on the
           <a href="#manpage">man page</a> and change the whole layout as you see fit using my
@@ -387,8 +392,8 @@
         <h2>Don't like my minimalist style? DIY...</h2>
         <p>
           Use the terminal window below to add to the CSS rules on this website. Your changes are stored in
-          <code>window.localstorage.personalStyle</code> and will be used to parse the pages on this website every time
-          you visit. That is.. until you clear your cache or <button>reset terminal</button>...
+          <code>window.localstorage.personalStyle</code> using javascript and will be loaded to parse the pages on this
+          website every time you visit. That is.. until you clear your cache...
         </p>
 
         <section class="console">
@@ -417,7 +422,5 @@
     <footer>
       <p><span>&copy;</span>Copyleft, all wrongs reversed</p>
     </footer>
-
-    <script src="/assets/script/main.js"></script>
   </body>
 </html>
