@@ -220,11 +220,6 @@ div#grid {
   grid-row: 1 / 2;
 }
 
-#window {
-  grid-column: 1 / 2;
-  grid-row: 41 / span 2;
-}
-
 #garden {
   grid-column: 2 / span 2;
   grid-row: 5 / span 2;
@@ -268,6 +263,11 @@ div#grid {
 #zen {
   grid-column: 2 / 3;
   grid-row: 40 / 41;
+}
+
+#window {
+  grid-column: 1 / 2;
+  grid-row: 41 / span 2;
 }
 
 #heap {
@@ -329,8 +329,18 @@ Penrose
 }
 
 #reutersvard {
-  --gap: 1.8rem;
-  --size: 2.8rem;
+  --length: 28rem;
+
+  @media (min-width: 30rem) {
+    --length: 16.2rem;
+    padding-left: 0.8rem;
+  }
+  @media (min-width: 60rem) {
+    --length: 22rem;
+  }
+
+  --size: calc(var(--length) / 6);
+  --gap: calc(var(--size) / 2);
   --step: calc(var(--size) + var(--gap));
   --rotateX: 55deg;
 
@@ -339,9 +349,6 @@ Penrose
   --dark: hsl(0, 0%, 40%);
 
   position: relative;
-  width: 100%;
-  padding-top: calc(var(--step) * 0.2);
-  padding-left: calc(var(--step) * 0.15);
   aspect-ratio: 1 / 1;
 
   & div,
@@ -349,86 +356,79 @@ Penrose
   & div::after,
   &::before,
   &::after {
+    content: '';
     position: absolute;
     display: grid;
     place-items: center;
     transform-origin: 0 0;
     transform-style: preserve-3d;
+    aspect-ratio: 1/1;
+    width: var(--size);
   }
 
   & div {
-    width: var(--size);
-    height: var(--size);
     background: var(--light);
 
-    &::before,
-    &::after {
-      content: '';
-      width: 100%;
-      aspect-ratio: 1/1;
-    }
-
     &::before {
-      content: '';
-      transform: rotateY(-90deg) rotateZ(90deg);
+      transform: rotate3d(0, 1, 0, 90deg);
       background: var(--dark);
     }
     &::after {
-      content: '';
       top: 100%;
-      transform: rotateX(-90deg);
+      transform: rotate3d(-1, 0, 0, 90deg);
       background: var(--medium);
     }
+
     &:nth-of-type(1) {
       transform: rotateX(var(--rotateX)) rotateZ(-45deg)
-        translate3d(calc(var(--step) * 3), calc(var(--step) * -2), calc(var(--step) * -3));
+        translate3d(calc(var(--step) * 3.2), calc(var(--step) * -2), calc(var(--step) * -3.5));
     }
     &:nth-of-type(2) {
       transform: rotateX(var(--rotateX)) rotateZ(-45deg)
-        translate3d(calc(var(--step) * 3), calc(var(--step) * -1), calc(var(--step) * -3));
+        translate3d(calc(var(--step) * 3.2), calc(var(--step) * -1), calc(var(--step) * -3.5));
     }
     &:nth-of-type(3) {
-      transform: rotateX(var(--rotateX)) rotateZ(-45deg) translate3d(calc(var(--step) * 3), 0, calc(var(--step) * -3));
+      transform: rotateX(var(--rotateX)) rotateZ(-45deg)
+        translate3d(calc(var(--step) * 3.2), 0, calc(var(--step) * -3.5));
     }
     &:nth-of-type(4) {
-      transform: rotateX(var(--rotateX)) rotateZ(-45deg) translate3d(calc(var(--step) * 2), 0, calc(var(--step) * -3));
+      transform: rotateX(var(--rotateX)) rotateZ(-45deg)
+        translate3d(calc(var(--step) * 2.2), 0, calc(var(--step) * -3.5));
     }
     &:nth-of-type(5) {
-      transform: rotateX(var(--rotateX)) rotateZ(-45deg) translate3d(calc(var(--step) * 1), 0, calc(var(--step) * -3));
+      transform: rotateX(var(--rotateX)) rotateZ(-45deg)
+        translate3d(calc(var(--step) * 1.2), 0, calc(var(--step) * -3.5));
     }
     &:nth-of-type(6) {
-      transform: rotateX(var(--rotateX)) rotateZ(-45deg) translate3d(0, 0, calc(var(--step) * -3));
+      transform: rotateX(var(--rotateX)) rotateZ(-45deg)
+        translate3d(calc(var(--step) * 0.2), 0, calc(var(--step) * -3.5));
     }
     &:nth-of-type(7) {
-      transform: rotateX(var(--rotateX)) rotateZ(-45deg) translate3d(0, 0, calc(var(--step) * -2));
+      transform: rotateX(var(--rotateX)) rotateZ(-45deg)
+        translate3d(calc(var(--step) * 0.2), 0, calc(var(--step) * -2.5));
     }
     &:nth-of-type(8) {
-      transform: rotateX(var(--rotateX)) rotateZ(-45deg) translate3d(0, 0, calc(var(--step) * -1));
+      transform: rotateX(var(--rotateX)) rotateZ(-45deg)
+        translate3d(calc(var(--step) * 0.2), 0, calc(var(--step) * -1.5));
     }
     &:nth-of-type(9) {
-      transform: rotateX(var(--rotateX)) rotateZ(-45deg) translate3d(0, 0, calc(var(--step) * -0));
+      transform: rotateX(var(--rotateX)) rotateZ(-45deg)
+        translate3d(calc(var(--step) * 0.2), 0, calc(var(--step) * -0.5));
     }
-  }
-
-  &::before,
-  &::after {
-    content: '';
-    width: var(--size);
-    aspect-ratio: 1/1;
-    z-index: 1;
   }
 
   &::before {
-    content: '';
     transform: rotateX(var(--rotateX)) rotateZ(-45deg)
-      translate3d(calc(var(--step) * 3), calc(var(--step) * -2), calc(var(--step) * -3));
+      translate3d(calc(var(--step) * 3.2), calc(var(--step) * -2), calc(var(--step) * -3.5));
     background: var(--light);
+    z-index: 1;
   }
 
   &::after {
     transform: rotateX(35deg) rotateY(45deg)
-      translate3d(calc(var(--step) * 4), calc(var(--step) * -2.95), calc(var(--step) * -3));
+      translate3d(calc(var(--step) * -2), calc(var(--step) * 3.5), calc(var(--step) * 3.2));
     background: var(--dark);
+    z-index: 1;
   }
 }
 
