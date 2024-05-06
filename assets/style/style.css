@@ -222,17 +222,17 @@ div#grid {
 
 #window {
   grid-column: 1 / 2;
-  grid-row: 2 / 4;
+  grid-row: 41 / span 2;
 }
 
 #garden {
   grid-column: 2 / span 2;
-  grid-row: 2 / span 2;
+  grid-row: 5 / span 2;
 }
 
 #penrose {
-  grid-column: 2 / 3;
-  grid-row: 1 / 2;
+  grid-column: 3 / 4;
+  grid-row: 3 / 4;
 }
 
 #incomprehensible {
@@ -242,7 +242,7 @@ div#grid {
 
 #reutersvard {
   grid-column: 2 / 3;
-  grid-row: 1 / 2;
+  grid-row: 2 / 3;
 }
 
 #desire {
@@ -325,6 +325,110 @@ Penrose
       background: linear-gradient(to top, var(--dark) 60%, var(--medium));
       color: var(--light);
     }
+  }
+}
+
+#reutersvard {
+  --gap: 1.8rem;
+  --size: 2.8rem;
+  --step: calc(var(--size) + var(--gap));
+  --rotateX: 55deg;
+
+  --light: hsl(0, 0%, 85%);
+  --medium: hsl(0, 0%, 55%);
+  --dark: hsl(0, 0%, 40%);
+
+  position: relative;
+  width: 100%;
+  padding-top: calc(var(--step) * 0.2);
+  padding-left: calc(var(--step) * 0.15);
+  aspect-ratio: 1 / 1;
+
+  & div,
+  & div::before,
+  & div::after,
+  &::before,
+  &::after {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    transform-origin: 0 0;
+    transform-style: preserve-3d;
+  }
+
+  & div {
+    width: var(--size);
+    height: var(--size);
+    background: var(--light);
+
+    &::before,
+    &::after {
+      content: '';
+      width: 100%;
+      aspect-ratio: 1/1;
+    }
+
+    &::before {
+      content: '';
+      transform: rotateY(-90deg) rotateZ(90deg);
+      background: var(--dark);
+    }
+    &::after {
+      content: '';
+      top: 100%;
+      transform: rotateX(-90deg);
+      background: var(--medium);
+    }
+    &:nth-of-type(1) {
+      transform: rotateX(var(--rotateX)) rotateZ(-45deg)
+        translate3d(calc(var(--step) * 3), calc(var(--step) * -2), calc(var(--step) * -3));
+    }
+    &:nth-of-type(2) {
+      transform: rotateX(var(--rotateX)) rotateZ(-45deg)
+        translate3d(calc(var(--step) * 3), calc(var(--step) * -1), calc(var(--step) * -3));
+    }
+    &:nth-of-type(3) {
+      transform: rotateX(var(--rotateX)) rotateZ(-45deg) translate3d(calc(var(--step) * 3), 0, calc(var(--step) * -3));
+    }
+    &:nth-of-type(4) {
+      transform: rotateX(var(--rotateX)) rotateZ(-45deg) translate3d(calc(var(--step) * 2), 0, calc(var(--step) * -3));
+    }
+    &:nth-of-type(5) {
+      transform: rotateX(var(--rotateX)) rotateZ(-45deg) translate3d(calc(var(--step) * 1), 0, calc(var(--step) * -3));
+    }
+    &:nth-of-type(6) {
+      transform: rotateX(var(--rotateX)) rotateZ(-45deg) translate3d(0, 0, calc(var(--step) * -3));
+    }
+    &:nth-of-type(7) {
+      transform: rotateX(var(--rotateX)) rotateZ(-45deg) translate3d(0, 0, calc(var(--step) * -2));
+    }
+    &:nth-of-type(8) {
+      transform: rotateX(var(--rotateX)) rotateZ(-45deg) translate3d(0, 0, calc(var(--step) * -1));
+    }
+    &:nth-of-type(9) {
+      transform: rotateX(var(--rotateX)) rotateZ(-45deg) translate3d(0, 0, calc(var(--step) * -0));
+    }
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    width: var(--size);
+    aspect-ratio: 1/1;
+    z-index: 1;
+  }
+
+  &::before {
+    content: '';
+    transform: rotateX(var(--rotateX)) rotateZ(-45deg)
+      translate3d(calc(var(--step) * 3), calc(var(--step) * -2), calc(var(--step) * -3));
+    background: var(--light);
+  }
+
+  &::after {
+    transform: rotateX(35deg) rotateY(45deg)
+      translate3d(calc(var(--step) * 4), calc(var(--step) * -2.95), calc(var(--step) * -3));
+    background: var(--dark);
   }
 }
 
