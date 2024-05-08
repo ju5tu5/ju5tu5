@@ -8,11 +8,12 @@
   --gap: 1rem;
 }
 
-/*******************************************************************************
-._ __  __ _(_)_ _   | |__ _ _  _ ___ _  _| |_  This is a really basic layout,
-| '  \/ _` | | ' \  | / _` | || / _ \ || |  _| working from browser styles it
-|_|_|_\__,_|_|_||_| |_\__,_|\_, \___/\_,_|\__| just sets fonts and placement...
-*****************************|__/**********************************************/
+/*    d8    db    88 88b 88     88        db    Yb  dP  dP"Yb  88   88 888888 
+88b  d88   dPYb   88 88Yb88     88       dPYb    YbdP  dP   Yb 88   88   88   
+88YbdP88  dP__Yb  88 88 Y88     88  .o  dP__Yb    8P   Yb   dP Y8   8P   88   
+88 YY 88 dP""""Yb 88 88  Y8     88ood8 dP""""Yb  dP     YbodP  `YbodP'   88
+
+lettering done using https://patorjk.com/software/taag/ using the 4Max font */
 
 /* Following https://www.a11yproject.com/posts/how-to-hide-content/  */
 .visually-hidden {
@@ -154,31 +155,32 @@ article hr {
 }
 
 div#grid {
+  --gridcolor: gainsboro;
   display: none;
   position: absolute;
   pointer-events: none;
   z-index: -1;
   width: 100%;
   height: 100%;
-  border: 1px solid hotpink;
+  border: 1px solid var(--gridcolor);
   background: repeating-linear-gradient(
       to right,
       transparent,
       transparent calc(var(--cellsize) - 1px),
-      hotpink var(--cellsize),
+      var(--gridcolor) var(--cellsize),
       transparent calc(var(--cellsize) + 1px),
       transparent calc(var(--cellsize) + var(--gapsize) - 2px),
-      hotpink calc(var(--cellsize) + var(--gapsize) - 1px),
+      var(--gridcolor) calc(var(--cellsize) + var(--gapsize) - 1px),
       transparent calc(var(--cellsize) + var(--gapsize))
     ),
     repeating-linear-gradient(
       to bottom,
       transparent,
       transparent calc(var(--cellsize) - 1px),
-      hotpink var(--cellsize),
+      var(--gridcolor) var(--cellsize),
       transparent calc(var(--cellsize) + 1px),
       transparent calc(var(--cellsize) + var(--gapsize) - 2px),
-      hotpink calc(var(--cellsize) + var(--gapsize) - 1px),
+      var(--gridcolor) calc(var(--cellsize) + var(--gapsize) - 1px),
       transparent calc(var(--cellsize) + var(--gapsize))
     );
 }
@@ -209,11 +211,10 @@ div#grid {
   }
 }
 
-/*******************************************************************************
-| _ \ |__ _ __ ___ _ __  ___ _ _| |_ 
-|  _/ / _` / _/ -_) '  \/ -_) ' \  _|
-|_| |_\__,_\__\___|_|_|_\___|_||_\__|
-*******************************************************************************/
+/*""Yb 88        db     dP""b8 888888 8b    d8 888888 88b 88 888888 
+88__dP 88       dPYb   dP   `" 88__   88b  d88 88__   88Yb88   88   
+88"""  88  .o  dP__Yb  Yb      88""   88YbdP88 88""   88 Y88   88   
+88     88ood8 dP""""Yb  YboodP 888888 88 YY 88 888888 88  Y8   */
 
 #welcome {
   grid-column: 1 / 2;
@@ -246,6 +247,15 @@ div#grid {
   columns: auto var(--cellsize);
 }
 
+#skull {
+  grid-column: 5 / 6;
+  grid-row: 1 / 2;
+}
+#skull img {
+  height: 100%;
+  margin: 0 auto;
+}
+
 #manpage {
   grid-column: 40 / span 2;
   grid-row: 3;
@@ -275,9 +285,10 @@ div#grid {
   grid-row: 40 / span 3;
 }
 
-/*******************************************************************************
-Penrose
-*******************************************************************************/
+/*""Yb 888888 88b 88 88""Yb  dP"Yb  .dP"Y8 888888 
+88__dP 88__   88Yb88 88__dP dP   Yb `Ybo." 88__   
+88"""  88""   88 Y88 88"Yb  Yb   dP o.`Y8b 88""   
+88     888888 88  Y8 88  Yb  YbodP  8bodP' 8888*/
 
 #penrose {
   --length: 84%;
@@ -312,21 +323,29 @@ Penrose
 
     &:nth-of-type(1) {
       transform: rotate(-40deg);
+      background: var(--light);
       background: linear-gradient(to top, var(--light) 60%, transparent);
       color: var(--medium);
     }
     &:nth-of-type(2) {
       transform: rotate(80deg);
+      background: var(--medium);
       background: linear-gradient(to top, var(--medium) 60%, var(--light));
       color: var(--dark);
     }
     &:nth-of-type(3) {
       transform: rotate(200deg);
+      background: var(--dark);
       background: linear-gradient(to top, var(--dark) 60%, var(--medium));
       color: var(--light);
     }
   }
 }
+
+/*""Yb 888888 88   88 888888 888888 88""Yb .dP"Y8 Yb    dP    db    88""Yb 8888b.  
+88__dP 88__   88   88   88   88__   88__dP `Ybo."  Yb  dP    dPYb   88__dP  8I  Yb 
+88"Yb  88""   Y8   8P   88   88""   88"Yb  o.`Y8b   YbdP    dP__Yb  88"Yb   8I  dY 
+88  Yb 888888 `YbodP'   88   888888 88  Yb 8bodP'    YP    dP""""Yb 88  Yb 8888*/
 
 #reutersvard {
   --length: 28rem;
@@ -368,15 +387,18 @@ Penrose
 
   & div {
     background: var(--light);
+    background: linear-gradient(to top right, var(--light), white);
 
     &::before {
       transform: rotate3d(0, 1, 0, 90deg);
       background: var(--dark);
+      background: linear-gradient(to bottom left, var(--dark), var(--medium));
     }
     &::after {
       top: 100%;
       transform: rotate3d(-1, 0, 0, 90deg);
       background: var(--medium);
+      background: linear-gradient(to top right, var(--medium), var(--light));
     }
 
     &:nth-of-type(1) {
@@ -421,6 +443,7 @@ Penrose
     transform: rotateX(var(--rotateX)) rotateZ(-45deg)
       translate3d(calc(var(--step) * 3.2), calc(var(--step) * -2), calc(var(--step) * -3.5));
     background: var(--light);
+    background: linear-gradient(to top right, var(--light), white);
     z-index: 1;
   }
 
@@ -428,13 +451,15 @@ Penrose
     transform: rotateX(35deg) rotateY(45deg)
       translate3d(calc(var(--step) * -2), calc(var(--step) * 3.5), calc(var(--step) * 3.2));
     background: var(--dark);
+    background: linear-gradient(to top right, var(--dark), var(--medium));
     z-index: 1;
   }
 }
 
-/*******************************************************************************
-Window
-*******************************************************************************/
+/*        dP 88 88b 88 8888b.   dP"Yb  Yb        dP 
+ Yb  db  dP  88 88Yb88  8I  Yb dP   Yb  Yb  db  dP  
+  YbdPYbdP   88 88 Y88  8I  dY Yb   dP   YbdPYbdP   
+   YP  YP    88 88  Y8 8888Y"   YbodP     YP  */
 
 #window {
   --wall: 1.5rem;
@@ -477,11 +502,11 @@ Window
   }
 }
 
-/*******************************************************************************
-. __ _ _  _ ___| |_ ___ ___
-/ _` | || / _ \  _/ -_|_-<
-\__, |\_,_\___/\__\___/__/
-****|_|************************************************************************/
+/*""Yb 88      dP"Yb   dP""b8 88  dP  dP"Yb  88   88  dP"Yb  888888 888888 .dP"Y8 
+88__dP 88     dP   Yb dP   `" 88odP  dP   Yb 88   88 dP   Yb   88   88__   `Ybo." 
+88""Yb 88  .o Yb   dP Yb      88"Yb  Yb b dP Y8   8P Yb   dP   88   88""   o.`Y8b 
+88oodP 88ood8  YbodP   YboodP 88  Yb  `"YoYo `YbodP'  YbodP    88   888888 8bod*/
+
 blockquote {
   margin: 0;
   padding: 0;
@@ -513,11 +538,11 @@ blockquote cite {
   background: var(--bgcolor);
 }
 
-/*******************************************************************************
-. __ ___ _ _  ______| |___ 
-/ _/ _ \ ' \(_-< _ \ / -_)
-\__\___/_||_/__|___/_\___|
-*******************************************************************************/
+/*P""b8  dP"Yb  88b 88 .dP"Y8  dP"Yb  88     888888 
+dP   `" dP   Yb 88Yb88 `Ybo." dP   Yb 88     88__   
+Yb      Yb   dP 88 Y88 o.`Y8b Yb   dP 88  .o 88""   
+ YboodP  YbodP  88  Y8 8bodP'  YbodP  88ood8 8888*/
+
 section.console {
   position: relative;
   display: flex;
