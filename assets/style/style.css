@@ -1,21 +1,20 @@
 :root {
-  /* --bgcolor: #ffe6f2; */
-  /* --fgcolor: #0042d0; */
+  /* --bgcolor: #ffe6f2;
+  --fgcolor: #0042d0; */
   --bgcolor: white;
   --fgcolor: black;
+
+  /* Grayscale for use in experiments */
+  --light: hsl(0, 0%, 85%);
+  --medium: hsl(0, 0%, 55%);
+  --dark: hsl(0, 0%, 40%);
 
   --termcolor: #424242ca;
   --gap: 1rem;
 }
 
-/*    d8    db    88 88b 88     88        db    Yb  dP  dP"Yb  88   88 888888 
-88b  d88   dPYb   88 88Yb88     88       dPYb    YbdP  dP   Yb 88   88   88   
-88YbdP88  dP__Yb  88 88 Y88     88  .o  dP__Yb    8P   Yb   dP Y8   8P   88   
-88 YY 88 dP""""Yb 88 88  Y8     88ood8 dP""""Yb  dP     YbodP  `YbodP'   88
-
-lettering done using https://patorjk.com/software/taag/ using the 4Max font */
-
-/* Following https://www.a11yproject.com/posts/how-to-hide-content/  */
+/* MARK: Main Layout
+Following https://www.a11yproject.com/posts/how-to-hide-content/ */
 .visually-hidden {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
@@ -60,6 +59,7 @@ header > a {
   z-index: calc(infinity);
   animation: breathe 5s ease-out infinite normal;
 }
+
 @keyframes breathe {
   0% {
     transform: scale(0.96);
@@ -84,6 +84,7 @@ header > a svg {
   animation: rotateY linear;
   animation-timeline: scroll(root x);
 }
+
 @keyframes rotateX {
   0% {
     transform: rotateX(0deg);
@@ -133,6 +134,9 @@ main {
   position: relative;
 }
 
+article h2 {
+  margin-top: 0.2rem;
+}
 article ol,
 article ul {
   padding: 0;
@@ -211,11 +215,8 @@ div#grid {
   }
 }
 
-/*""Yb 88        db     dP""b8 888888 8b    d8 888888 88b 88 888888 
-88__dP 88       dPYb   dP   `" 88__   88b  d88 88__   88Yb88   88   
-88"""  88  .o  dP__Yb  Yb      88""   88YbdP88 88""   88 Y88   88   
-88     88ood8 dP""""Yb  YboodP 888888 88 YY 88 888888 88  Y8   */
-
+/* MARK: Placement
+*/
 #welcome {
   grid-column: 1 / 2;
   grid-row: 1 / 2;
@@ -226,9 +227,22 @@ div#grid {
   grid-row: 5 / span 2;
 }
 
-#penrose {
+#moire {
   grid-column: 3 / 4;
-  grid-row: 3 / 4;
+  grid-row: 1 / 3;
+}
+#moire-circles {
+  grid-column: 4 / 5;
+  grid-row: 1 / 2;
+}
+#moire-burst {
+  grid-column: 5 / 6;
+  grid-row: 1 / 2;
+}
+
+#penrose {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
 }
 
 #incomprehensible {
@@ -237,8 +251,8 @@ div#grid {
 }
 
 #reutersvard {
-  grid-column: 2 / 3;
-  grid-row: 2 / 3;
+  grid-column: 1 / 2;
+  grid-row: 5 / 6;
 }
 
 #desire {
@@ -248,8 +262,8 @@ div#grid {
 }
 
 #skull {
-  grid-column: 5 / 6;
-  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  grid-row: 2 / 4;
 }
 #skull img {
   height: 100%;
@@ -285,26 +299,99 @@ div#grid {
   grid-row: 40 / span 3;
 }
 
-/*""Yb 888888 88b 88 88""Yb  dP"Yb  .dP"Y8 888888 
-88__dP 88__   88Yb88 88__dP dP   Yb `Ybo." 88__   
-88"""  88""   88 Y88 88"Yb  Yb   dP o.`Y8b 88""   
-88     888888 88  Y8 88  Yb  YbodP  8bodP' 8888*/
+/* MARK: Moire-circles
+*/
+@property --moire-circles {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes moire-circles {
+  to {
+    --moire-circles: 360deg;
+  }
+}
+#moire-circles {
+  &:has(input:checked) {
+    animation: moire-circles 10s linear infinite;
+    --offset-x: calc(50% + sin(var(--moire-circles)) * 50%);
+    --offset-y: calc(50% + cos(var(--moire-circles)) * 50%);
+  }
+  --offset-x: calc(50% + sin(var(--moire-circles)) * 50%);
+  --offset-y: calc(50% + cos(var(--moire-circles)) * 50%);
 
+  position: relative;
+  background: repeating-radial-gradient(
+      circle at 100% 100%,
+      transparent,
+      transparent 4px,
+      var(--light) 4px,
+      var(--light) 6px
+    ),
+    repeating-radial-gradient(
+      circle at var(--offset-x) var(--offset-y),
+      transparent,
+      transparent 4px,
+      var(--light) 4px,
+      var(--light) 5px
+    );
+
+  label {
+    display: flex;
+    flex-flow: row-reverse;
+    position: absolute;
+    color: var(--medium);
+    bottom: calc(-1.5 * var(--gap));
+  }
+}
+
+/* MARK: Moire-burst
+*/
+@property --moire-burst {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes moire-burst {
+  to {
+    --moire-burst: 360deg;
+  }
+}
+#moire-burst {
+  &:has(input:checked) {
+    animation: moire-burst 10s linear infinite;
+    --offset-x: calc(50% + sin(var(--moire-burst)) * 20%);
+    --offset-y: calc(50% + cos(var(--moire-burst)) * 20%);
+  }
+  --offset-x: calc(50% + sin(var(--moire-burst)) * 20%);
+  --offset-y: calc(50% + cos(var(--moire-burst)) * 20%);
+
+  position: relative;
+  background: repeating-conic-gradient(at 50% 55%, transparent 0deg 2deg, var(--light) 2deg 3deg),
+    repeating-conic-gradient(at var(--offset-x) var(--offset-y), transparent 0deg 2deg, var(--light) 2deg 3deg);
+
+  label {
+    display: flex;
+    flex-flow: row-reverse;
+    position: absolute;
+    color: var(--medium);
+    bottom: calc(-1.5 * var(--gap));
+  }
+}
+
+/* MARK: Penrose
+*/
 #penrose {
   --length: 84%;
   --step: calc(var(--length) / 5);
   --tan60: tan(60deg);
-
-  --light: hsl(0, 0%, 85%);
-  --medium: hsl(0, 0%, 55%);
-  --dark: hsl(0, 0%, 40%);
 
   position: relative;
   padding-top: calc(var(--step) * 1.2);
   padding-left: calc(var(--step) * 0.4);
   aspect-ratio: 1 / 1;
 
-  & div {
+  div {
     position: absolute;
     width: 100%;
     aspect-ratio: 1 / 1;
@@ -342,11 +429,8 @@ div#grid {
   }
 }
 
-/*""Yb 888888 88   88 888888 888888 88""Yb .dP"Y8 Yb    dP    db    88""Yb 8888b.  
-88__dP 88__   88   88   88   88__   88__dP `Ybo."  Yb  dP    dPYb   88__dP  8I  Yb 
-88"Yb  88""   Y8   8P   88   88""   88"Yb  o.`Y8b   YbdP    dP__Yb  88"Yb   8I  dY 
-88  Yb 888888 `YbodP'   88   888888 88  Yb 8bodP'    YP    dP""""Yb 88  Yb 8888*/
-
+/* MARK: Reutersvard
+*/
 #reutersvard {
   --length: 28rem;
 
@@ -362,10 +446,6 @@ div#grid {
   --gap: calc(var(--size) / 2);
   --step: calc(var(--size) + var(--gap));
   --rotateX: 55deg;
-
-  --light: hsl(0, 0%, 85%);
-  --medium: hsl(0, 0%, 55%);
-  --dark: hsl(0, 0%, 40%);
 
   position: relative;
   aspect-ratio: 1 / 1;
@@ -456,11 +536,8 @@ div#grid {
   }
 }
 
-/*        dP 88 88b 88 8888b.   dP"Yb  Yb        dP 
- Yb  db  dP  88 88Yb88  8I  Yb dP   Yb  Yb  db  dP  
-  YbdPYbdP   88 88 Y88  8I  dY Yb   dP   YbdPYbdP   
-   YP  YP    88 88  Y8 8888Y"   YbodP     YP  */
-
+/* MARK: Window
+*/
 #window {
   --wall: 1.5rem;
   aspect-ratio: 1 / 2;
@@ -502,11 +579,8 @@ div#grid {
   }
 }
 
-/*""Yb 88      dP"Yb   dP""b8 88  dP  dP"Yb  88   88  dP"Yb  888888 888888 .dP"Y8 
-88__dP 88     dP   Yb dP   `" 88odP  dP   Yb 88   88 dP   Yb   88   88__   `Ybo." 
-88""Yb 88  .o Yb   dP Yb      88"Yb  Yb b dP Y8   8P Yb   dP   88   88""   o.`Y8b 
-88oodP 88ood8  YbodP   YboodP 88  Yb  `"YoYo `YbodP'  YbodP    88   888888 8bod*/
-
+/* MARK: Blockquotes
+*/
 blockquote {
   margin: 0;
   padding: 0;
@@ -538,11 +612,8 @@ blockquote cite {
   background: var(--bgcolor);
 }
 
-/*P""b8  dP"Yb  88b 88 .dP"Y8  dP"Yb  88     888888 
-dP   `" dP   Yb 88Yb88 `Ybo." dP   Yb 88     88__   
-Yb      Yb   dP 88 Y88 o.`Y8b Yb   dP 88  .o 88""   
- YboodP  YbodP  88  Y8 8bodP'  YbodP  88ood8 8888*/
-
+/* MARK: Console
+*/
 section.console {
   position: relative;
   display: flex;
