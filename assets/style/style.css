@@ -74,6 +74,7 @@ header > a {
     transform: scale(0.96);
   }
 }
+
 header > a div {
   animation: rotateX linear;
   animation-timeline: scroll(root y);
@@ -132,6 +133,13 @@ footer p span {
 
 main {
   position: relative;
+
+  @media (max-width: 30rem) {
+    & > * {
+      margin: 1rem 0;
+      overflow: hidden;
+    }
+  }
 }
 
 article h2 {
@@ -231,16 +239,9 @@ div#grid {
   grid-column: 3 / 4;
   grid-row: 1 / 3;
 }
-#moire-circles {
-  grid-column: 4 / 5;
-  grid-row: 1 / 2;
-}
-#moire-burst {
-  grid-column: 5 / 6;
-  grid-row: 1 / 2;
-}
 
 #penrose {
+  aspect-ratio: 1/1;
   grid-column: 2 / 3;
   grid-row: 1 / 2;
 }
@@ -317,9 +318,12 @@ div#grid {
     --offset-x: calc(50% + sin(var(--moire-circles)) * 50%);
     --offset-y: calc(50% + cos(var(--moire-circles)) * 50%);
   }
+
   --offset-x: calc(50% + sin(var(--moire-circles)) * 50%);
   --offset-y: calc(50% + cos(var(--moire-circles)) * 50%);
 
+  min-width: 100%;
+  aspect-ratio: 1/1;
   position: relative;
   background: repeating-radial-gradient(
       circle at 100% 100%,
@@ -341,7 +345,11 @@ div#grid {
     flex-flow: row-reverse;
     position: absolute;
     color: var(--medium);
-    bottom: calc(-1.5 * var(--gap));
+
+    bottom: 0;
+    @media (min-width: 30rem) {
+      bottom: calc(-1.5 * var(--gap));
+    }
   }
 }
 
@@ -367,6 +375,10 @@ div#grid {
   --offset-y: calc(50% + cos(var(--moire-burst)) * 20%);
 
   position: relative;
+
+  min-width: 100%;
+  aspect-ratio: 1/1;
+
   background: repeating-conic-gradient(at 50% 55%, transparent 0deg 2deg, var(--light) 2deg 3deg),
     repeating-conic-gradient(at var(--offset-x) var(--offset-y), transparent 0deg 2deg, var(--light) 2deg 3deg);
 
@@ -375,7 +387,11 @@ div#grid {
     flex-flow: row-reverse;
     position: absolute;
     color: var(--medium);
-    bottom: calc(-1.5 * var(--gap));
+
+    bottom: 0;
+    @media (min-width: 30rem) {
+      bottom: calc(-1.5 * var(--gap));
+    }
   }
 }
 
@@ -448,7 +464,8 @@ div#grid {
   --rotateX: 55deg;
 
   position: relative;
-  aspect-ratio: 1 / 1;
+  min-width: 100%;
+  aspect-ratio: 1 / 1.2;
 
   & div,
   & div::before,
@@ -638,7 +655,7 @@ section.console::after {
   width: 0.7rem;
   height: 0.7rem;
   left: 0.4rem;
-  top: 1.2rem;
+  top: 0.6rem;
   border-radius: 50%;
   z-index: 10;
 }
@@ -651,6 +668,7 @@ section.console::after {
 }
 section.console textarea {
   flex-grow: 2;
+  min-height: 5rem;
   background: var(--termcolor) !important;
   resize: none;
   padding: 0.2rem;
