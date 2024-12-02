@@ -50,6 +50,9 @@ footer {
   display: contents;
 }
 
+/* MARK: Logo Animation
+*/
+
 header > a {
   display: block;
   position: fixed;
@@ -76,14 +79,19 @@ header > a {
 }
 
 header > a div {
-  animation: rotateX linear;
-  animation-timeline: scroll(root y);
+  @supports (animation-timeline: scroll()) {
+    animation: rotateX linear;
+    animation-timeline: scroll(root y);
+  }
 }
 header > a svg {
   background: red;
   fill: white;
-  animation: rotateY linear;
-  animation-timeline: scroll(root x);
+
+  @supports (animation-timeline: scroll()) {
+    animation: rotateY linear;
+    animation-timeline: scroll(root x);
+  }
 }
 
 @keyframes rotateX {
@@ -263,8 +271,8 @@ div#grid {
 }
 
 #skull {
-  grid-column: 1 / 2;
-  grid-row: 2 / 4;
+  grid-column: 5 / 7;
+  grid-row: 5 / 7;
 }
 #skull img {
   height: 100%;
@@ -298,6 +306,55 @@ div#grid {
 #heap {
   grid-column: 41 / span 2;
   grid-row: 40 / span 3;
+}
+
+/* MARK: Skull
+*/
+@property --skull-lightness {
+  syntax: '<percentage>';
+  initial-value: 100%;
+  inherits: false;
+}
+
+@property --skull-hue {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes lightness {
+  0% {
+    --skull-lightness: 100%;
+  }
+  100% {
+    --skull-lightness: 0%;
+  }
+}
+@keyframes hue {
+  0% {
+    --skull-hue: 0deg;
+  }
+  100% {
+    --skull-hue: 360deg;
+  }
+}
+
+#skull {
+  #thoughts {
+    fill: black;
+    @supports (fill: oklch(0 0 0)) {
+      fill: oklch(var(--skull-lightness) 0.5 var(--skull-hue));
+
+      @media (prefers-reduced-motion: no-preference) {
+        animation: 10s hue infinite, 2s lightness infinite alternate;
+
+        @supports (animation-timeline: view()) {
+          animation: hue linear;
+          animation-timeline: view(y);
+        }
+      }
+    }
+  }
 }
 
 /* MARK: Moire-circles
