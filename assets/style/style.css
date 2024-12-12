@@ -30,7 +30,7 @@ Following https://www.a11yproject.com/posts/how-to-hide-content/ */
 }
 
 [id] {
-  scroll-margin-top: 3rem;
+  scroll-margin: 3rem;
 }
 
 html {
@@ -240,7 +240,7 @@ div#grid {
 
 #garden {
   grid-column: 2 / span 2;
-  grid-row: 5 / span 2;
+  grid-row: 3 / span 2;
 }
 
 #moire {
@@ -251,7 +251,7 @@ div#grid {
 #penrose {
   aspect-ratio: 1/1;
   grid-column: 2 / 3;
-  grid-row: 1 / 2;
+  grid-row: 2 / 3;
 }
 
 #incomprehensible {
@@ -261,7 +261,7 @@ div#grid {
 
 #reutersvard {
   grid-column: 1 / 2;
-  grid-row: 5 / 6;
+  grid-row: 4 / 5;
 }
 
 #desire {
@@ -271,12 +271,13 @@ div#grid {
 }
 
 #skull {
-  grid-column: 5 / 7;
-  grid-row: 5 / 7;
-}
-#skull img {
-  height: 100%;
-  margin: 0 auto;
+  grid-column: 5 / 6;
+  grid-row: 5 / 6;
+
+  img {
+    height: 100%;
+    margin: 0 auto;
+  }
 }
 
 #manpage {
@@ -306,6 +307,79 @@ div#grid {
 #heap {
   grid-column: 41 / span 2;
   grid-row: 40 / span 3;
+}
+
+#transition {
+  grid-column: 4 / span 2;
+  grid-row: 7 / span 2;
+}
+
+#moire {
+  grid-column: 7 / 8;
+  grid-row: 3 / span 2;
+}
+#moire-circles {
+  grid-column: 8 / 9;
+  grid-row: 3 / 4;
+}
+#moire-burst {
+  grid-column: 9 / 10;
+  grid-row: 3 / 4;
+}
+#moire-dots {
+  grid-column: 8 / 9;
+  grid-row: 4 / 5;
+}
+
+/* MARK: Transitions
+*/
+@keyframes move-out {
+  from {
+    transform: translateY(0%);
+  }
+
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes move-in {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0%);
+  }
+}
+
+::view-transition-old(foo) {
+  animation: 0.4s ease-in both move-out;
+}
+
+::view-transition-new(foo) {
+  animation: 0.4s ease-in both move-in;
+}
+
+#transition {
+  view-transition-name: foo;
+  p {
+  }
+  img {
+    display: none;
+    max-width: 100%;
+    margin: 1rem 0;
+  }
+  &.visual {
+    p {
+      display: none;
+    }
+    img {
+      display: block;
+    }
+  }
 }
 
 /* MARK: Skull
@@ -357,6 +431,25 @@ div#grid {
   }
 }
 
+/* MARK: Moire labels
+*/
+#moire-circles,
+#moire-burst,
+#moire-dots {
+  label {
+    display: flex;
+    flex-flow: row-reverse;
+    position: absolute;
+    color: var(--medium);
+
+    bottom: 0;
+
+    /* @media (min-width: 30rem) {
+      bottom: calc(-1.5 * var(--gap));
+    } */
+  }
+}
+
 /* MARK: Moire-circles
 */
 @property --moire-circles {
@@ -396,18 +489,6 @@ div#grid {
       var(--light) 4px,
       var(--light) 5px
     );
-
-  label {
-    display: flex;
-    flex-flow: row-reverse;
-    position: absolute;
-    color: var(--medium);
-
-    bottom: 0;
-    @media (min-width: 30rem) {
-      bottom: calc(-1.5 * var(--gap));
-    }
-  }
 }
 
 /* MARK: Moire-burst
@@ -438,17 +519,43 @@ div#grid {
 
   background: repeating-conic-gradient(at 50% 55%, transparent 0deg 2deg, var(--light) 2deg 3deg),
     repeating-conic-gradient(at var(--offset-x) var(--offset-y), transparent 0deg 2deg, var(--light) 2deg 3deg);
+}
 
-  label {
-    display: flex;
-    flex-flow: row-reverse;
+/* MARK: Moire dots
+*/
+@property --moire-dots {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: true;
+}
+@keyframes moire-dots {
+  to {
+    --moire-dots: 360deg;
+  }
+}
+#moire-dots {
+  &:has(input:checked) {
+    animation: moire-dots 20s linear infinite;
+  }
+
+  position: relative;
+  min-width: 100%;
+  aspect-ratio: 1/1;
+
+  background: radial-gradient(var(--light) 2px, transparent 0);
+  background-size: 10px 10px;
+  overflow: clip;
+
+  &:before {
+    content: '';
     position: absolute;
-    color: var(--medium);
-
-    bottom: 0;
-    @media (min-width: 30rem) {
-      bottom: calc(-1.5 * var(--gap));
-    }
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background: radial-gradient(var(--light) 2px, transparent 0);
+    background-size: 10px 10px;
+    transform: rotate(var(--moire-dots));
   }
 }
 
