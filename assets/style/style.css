@@ -30,7 +30,7 @@ Following https://www.a11yproject.com/posts/how-to-hide-content/ */
 }
 
 [id] {
-  scroll-margin: 3rem;
+  scroll-margin: 5rem;
 }
 
 html {
@@ -330,6 +330,10 @@ div#grid {
   grid-column: 8 / 9;
   grid-row: 4 / 5;
 }
+#moire-lines {
+  grid-column: 9 / 10;
+  grid-row: 4 / 5;
+}
 
 /* MARK: Transitions
 */
@@ -435,7 +439,12 @@ div#grid {
 */
 #moire-circles,
 #moire-burst,
-#moire-dots {
+#moire-dots,
+#moire-lines {
+  position: relative;
+  min-width: 100%;
+  aspect-ratio: 1/1;
+
   label {
     display: flex;
     flex-flow: row-reverse;
@@ -472,9 +481,6 @@ div#grid {
   --offset-x: calc(50% + sin(var(--moire-circles)) * 50%);
   --offset-y: calc(50% + cos(var(--moire-circles)) * 50%);
 
-  min-width: 100%;
-  aspect-ratio: 1/1;
-  position: relative;
   background: repeating-radial-gradient(
       circle at 100% 100%,
       transparent,
@@ -512,11 +518,6 @@ div#grid {
   --offset-x: calc(50% + sin(var(--moire-burst)) * 20%);
   --offset-y: calc(50% + cos(var(--moire-burst)) * 20%);
 
-  position: relative;
-
-  min-width: 100%;
-  aspect-ratio: 1/1;
-
   background: repeating-conic-gradient(at 50% 55%, transparent 0deg 2deg, var(--light) 2deg 3deg),
     repeating-conic-gradient(at var(--offset-x) var(--offset-y), transparent 0deg 2deg, var(--light) 2deg 3deg);
 }
@@ -535,15 +536,11 @@ div#grid {
 }
 #moire-dots {
   &:has(input:checked) {
-    animation: moire-dots 20s linear infinite;
+    animation: moire-dots 30s linear infinite;
   }
 
-  position: relative;
-  min-width: 100%;
-  aspect-ratio: 1/1;
-
-  background: radial-gradient(var(--light) 2px, transparent 0);
-  background-size: 10px 10px;
+  background: radial-gradient(var(--medium) 1px, transparent 0);
+  background-size: 5px 5px;
   overflow: clip;
 
   &:before {
@@ -553,10 +550,31 @@ div#grid {
     height: 200%;
     top: -50%;
     left: -50%;
-    background: radial-gradient(var(--light) 2px, transparent 0);
-    background-size: 10px 10px;
+    background: radial-gradient(var(--medium) 1px, transparent 0);
+    background-size: 5px 5px;
     transform: rotate(var(--moire-dots));
   }
+}
+
+/* MARK: Moire lines
+*/
+@property --moire-lines {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: true;
+}
+@keyframes moire-lines {
+  to {
+    --moire-lines: 360deg;
+  }
+}
+#moire-lines {
+  &:has(input:checked) {
+    animation: moire-lines 10s linear infinite;
+  }
+
+  background: repeating-linear-gradient(var(--medium), var(--medium) 1px, transparent 1px, transparent 10px),
+    repeating-linear-gradient(var(--moire-lines), var(--medium), var(--medium) 1px, transparent 1px, transparent 10px);
 }
 
 /* MARK: Penrose
