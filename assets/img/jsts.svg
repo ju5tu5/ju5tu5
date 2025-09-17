@@ -1,12 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-      <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 31 19">
-        <rect width="2" height="15" x="2" y="4" />
-        <rect width="2" height="11" x="5" y="4" />
-        <rect width="2" height="11" x="8" y="4" />
-        <rect width="2" height="11" x="10" y="4" transform="skewX(12)" />
-        <rect width="2" height="15" x="16" />
-        <rect width="2" height="11" x="19" y="4" />
-        <rect width="2" height="11" x="22" y="4" />
-        <rect width="2" height="11" x="24" y="4" transform="skewX(12)" />
-        <rect width="31" height="2" y="8" />
-      </svg>
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 31 19">
+<path d="M2 4h2v15H2zM5 4h2v11H5zM8 4h2v11H8zM10.85 4h2l2.338 11h-2zM16 0h2v15h-2zM19 4h2v11h-2zM22 4h2v11h-2zM24.85 4h2l2.338 11h-2z"/>
+<path d="M0 8h31v2H0z"/>
+</svg>
