@@ -1,0 +1,196 @@
+:root {
+  --bgcolor: white;
+  --fgcolor: black;
+
+  --light: hsl(0, 0%, 85%);
+  --medium: hsl(0, 0%, 55%);
+  --dark: hsl(0, 0%, 40%);
+
+  --termcolor: #424242ca;
+  --gap: 1rem;
+
+  --breakpoint-tablet: 30rem;
+  --breakpoint-desktop: 40rem;
+}
+
+/* MARK: Hide content
+Following https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* MARK: Reset by Josh Comeau
+*/
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+*:not(dialog) {
+  margin: 0;
+}
+
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  /* 4. Add accessible line-height */
+  line-height: 1.5;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 6. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 7. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+/*
+  10. Create a root stacking context
+*/
+#root,
+#__next {
+  isolation: isolate;
+}
+
+/* MARK: Basic elements
+*/
+* {
+  box-sizing: border-box;
+}
+
+[id] {
+  scroll-margin: 5rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative;
+  /* Thanks to https://modernfontstacks.com/ */
+  font-family: 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif;
+  font-weight: normal;
+  background: var(--bgcolor);
+}
+
+h2 {
+  margin-top: 0.2rem;
+  margin-bottom: var(--gap);
+}
+
+ol,
+ul {
+  padding: 0;
+  list-style-position: inside;
+}
+
+sup {
+  line-height: 0.6rem;
+  font-size: 0.8rem;
+}
+
+sup a,
+.footnotes a {
+  text-decoration: none;
+}
+
+hr {
+  margin: 1rem 0;
+  border: 0;
+  height: 1px;
+  width: 7rem;
+  background: var(--fgcolor);
+}
+
+p + p {
+  margin-top: var(--gap);
+}
+
+blockquote {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-image:
+    radial-gradient(black 15%, transparent 16%), radial-gradient(black 15%, transparent 16%);
+  background-size: 8px 8px;
+  background-position:
+    0 0,
+    4px 4px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+
+blockquote p {
+  margin: 0;
+  background: var(--bgcolor);
+  text-wrap: balance;
+  font-size: 1.9rem;
+}
+
+blockquote p::before {
+  content: '“';
+}
+
+blockquote p::after {
+  content: '„';
+}
+
+blockquote cite {
+  padding-top: 0.5rem;
+  font-size: 1rem;
+  white-space: nowrap;
+  background: var(--bgcolor);
+}

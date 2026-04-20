@@ -33,10 +33,3 @@ Array.from(document.querySelectorAll('main > *')).map((element) => {
   }
 })
 
-// let becoming eclipse being
-document.querySelector('#transition button').addEventListener('click', (event) => {
-  document.startViewTransition ? document.startViewTransition(transition) : transition()
-})
-function transition() {
-  document.querySelector('#transition').classList.toggle('visual')
-}
