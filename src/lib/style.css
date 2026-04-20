@@ -154,6 +154,15 @@ hr {
   background: var(--fgcolor);
 }
 
+p + h1,
+p + h2,
+p + h3,
+p + h4,
+p + h5,
+p + h6 {
+  margin-top: var(--gap);
+}
+
 p + p {
   margin-top: var(--gap);
 }
