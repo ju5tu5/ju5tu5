@@ -1,0 +1,43 @@
+<header>
+  <h1 class="visually-hidden">ju5tu5.nl</h1>
+
+  <a href="/" aria-label="Go to the garden entrance">
+    <span class="visually-hidden">Go to the garden entrance</span>
+    <div>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xml:space="preserve"
+        viewBox="0 0 31 19"
+        aria-labelledby="logoTitle logoDesc"
+        role="img"
+        style="fill:Canvas;background:red;"
+      >
+        <title id="logoTitle">Justus' logo</title>
+        <desc id="logoDesc">
+          A stylistic, ippon-inspired representation of the word 'justus'
+        </desc>
+        <path d="M0 8h31v2H0zm2-4h 0h2v15H2zm3 0h2v11H5zm3 0h2v11H8zm3 0h2l2 11h-2zm5-4h2v15h-2zm3 4h2v11h-2zm3 0h2v11h-2zm3 0h2l2 11h-2z" />
+      </svg>
+    </div>
+  </a>
+
+  <nav>
+    <h2 class="visually-hidden">Quicklinks:</h2>
+    <p class="visually-hidden">
+      Here are some quicklinks to certain patches in this garden
+    </p>
+    <ul>
+      {%- for item in collections.menu -%}
+        <li>
+          <a
+            {% if page.url === item.url %}
+              aria-current="page"
+            {% endif %}
+            href="{{ item.url }}"
+          >{{ item.data.title }}</a>
+        </li>
+      {%- endfor -%}
+      <button><span>Menu</span></button>
+    </ul>
+  </nav>
+</header>

@@ -1,0 +1,80 @@
+---
+title: diwhy
+date: 2022-10-10
+---
+<article>
+  <h2>Don't like my minimalist style? DIY...</h2>
+  <p>
+    Use the terminal window below to add to the CSS rules on this website. Your changes are stored in
+    <code>window.localstorage.personalStyle</code> using javascript and will be loaded to parse the pages on this
+    website every time you visit. That is.. until you clear your cache...
+  </p>
+
+  <section class="console">
+    <h2>edit personal-style.css</h2>
+    <textarea name="diwhy" id="diwhy" placeholder="/* Start typing CSS here... */"></textarea>
+  </section>
+</article>
+
+<style>
+  section.console {
+    position: relative;
+    margin-top: var(--gap);
+    display: flex;
+    flex-flow: column nowrap;
+    border-radius: 1rem;
+    flex-grow: 2;
+    color: white;
+  }
+  section.console h2 {
+    background: linear-gradient(to top, silver, whitesmoke);
+    color: black;
+    line-height: 1.4rem;
+    font-size: 1rem;
+    margin-bottom: 0;
+    border-radius: 0.5rem 0.5rem 0 0;
+    text-align: center;
+  }
+
+  section.console::before {
+    position: absolute;
+    display: block;
+    content: '';
+    width: 0.7em;
+    height: 0.7em;
+    left: 0.4em;
+    top: 0.6em;
+    border-radius: 50%;
+    background-color: red;
+    box-shadow: 1.2em 0 orange, 2.4em 0 green;
+    z-index: 10;
+  }
+
+  section.console textarea {
+    flex-grow: 2;
+    aspect-ratio: 4/2;
+    background: #424242ca !important;
+    resize: none;
+    padding: 0.3rem;
+    color: var(--bgcolor);
+    font-family: monospace;
+    text-align: left;
+    outline: none !important;
+    border-radius: 0 0 0.5rem 0.5rem;
+
+    &::placeholder {
+      color: silver;
+    }
+  }
+
+  code {
+    word-break:break-all;
+  }
+
+  @media (min-width: 30rem) {
+    article {
+      max-width: 30em;
+      grid-column: 1 / 13;
+    }
+  }
+</style>

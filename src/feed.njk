@@ -1,0 +1,45 @@
+---json
+{
+  "permalink": "feed.atom",
+  "eleventyExcludeFromCollections": true,
+  "layout": "",
+  "metadata": {
+    "title": "ju5tu5.nl",
+    "language": "en",
+    "base": "https://ju5tu5.nl/",
+    "author": {
+      "name": "Justus Sturkenboom",
+      "email": "justus@ju5tu5.nl"
+    }
+  }
+}
+
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="{{ metadata.language }}">
+  <title>{{ metadata.title }}</title>
+  <author>
+    <name>{{ metadata.author.name }}</name>
+  </author>
+  <id>{{ metadata.base | addPathPrefixToFullUrl }}</id>
+  <link rel="alternate" type="text/html" href="{{ metadata.base }}" />
+  <link rel="self" href="{{ permalink | htmlBaseUrl(metadata.base) }}" />
+  <updated>{{
+    collections.all | getNewestCollectionItemDate | dateToRfc3339
+  }}</updated>
+  {%- for thing in collections.all | reverse %}
+    {% if thing.data.title !== "Quotes" %}
+      {%- set absoluteUrl %}{{ thing.url | htmlBaseUrl(metadata.base) }}{%
+        endset
+      %}
+      <entry>
+        <title>{{ thing.data.title }}</title>
+        <link href="{{ absoluteUrl }}" />
+        <updated>{{ thing.date | dateToRfc3339 }}</updated>
+        <id>{{ absoluteUrl }}</id>
+        <content type="html">
+          <![CDATA[{{ thing.content | safe }}]]>
+        </content>
+      </entry>
+    {% endif %}{%- endfor %}
+</feed>

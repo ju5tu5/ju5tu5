@@ -1,25 +1,18 @@
-node_modules
+# Logs
+logs
+*.log
+npm-debug.log*
 
-# Output
-.output
-.vercel
-.netlify
-.wrangler
-/.svelte-kit
-/build
+# Node
+node_modules/
+.npm
 
-# OS
-.DS_Store
-Thumbs.db
-
-# Env
+# dotenv environment variable files
 .env
-.env.*
-!.env.example
-!.env.test
 
-# Vite
-vite.config.js.timestamp-*
-vite.config.ts.timestamp-*
-# Playwright
-test-results
+# MacOS
+.DS_Store
+
+# 11ty
+/build
+/dev

@@ -1,0 +1,389 @@
+:root {
+  --light: hsl(0, 0%, 85%);
+  --medium: hsl(0, 0%, 55%);
+  --dark: hsl(0, 0%, 40%);
+
+  --gap: 1rem;
+}
+
+/* MARK: Hide content
+Following https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* MARK: Reset by Josh Comeau
+Following https://www.joshwcomeau.com/css/custom-css-reset/ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+*:not(dialog) {
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+#root, #__next {
+  isolation: isolate;
+}
+
+/* MARK: Basic elements
+*/
+* {
+  box-sizing: border-box;
+}
+
+[id] {
+  scroll-margin: 5rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative;
+  /* https://modernfontstacks.com/ */
+  font-family: 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif;
+  font-weight: normal;
+  
+  background-color: Canvas;
+  color: CanvasText;
+  color-scheme: light dark;
+}
+
+.noscroll { 
+  overflow: hidden;
+}
+
+h2 {
+  margin-top: 0.2rem;
+  margin-bottom: var(--gap);
+}
+
+ol, ul {
+  padding: 0;
+  list-style-position: inside;
+}
+
+sup {
+  line-height: 0.6rem;
+  font-size: 0.8rem;
+}
+
+sup a,
+.footnotes a {
+  text-decoration: none;
+}
+
+hr {
+  margin: 1rem 0;
+  border: 0;
+  height: 1px;
+  width: 7rem;
+  background: CanvasText;
+}
+
+p + h1, p + h2, p + h3, p + h4, p + h5, p + h6 {
+  margin-top: var(--gap);
+}
+
+p + p {
+  margin-top: var(--gap);
+}
+
+blockquote p:first-of-type::before{
+  position: relative;
+  content: '“';
+}
+blockquote p:nth-last-of-type(2)::after {
+  content: '”';
+}
+blockquote p:has(cite) {
+  margin-top: .3em;
+  
+  &::before {
+    content: '— ';
+  }
+}
+
+/* MARK: Main
+*/
+ main {
+    --colls: 1;
+
+    position: relative;
+    padding: 5rem var(--gap) 3rem var(--gap);
+
+    max-width: 100%;
+    min-height: 100vh;
+
+    display: grid;
+    grid-template-columns: repeat(var(--colls), 1fr);
+    gap: var(--gap);
+  }
+
+  @media (min-width: 30rem) {
+    main {
+      --colls: 12;
+      place-items: center;
+      justify-content: stretch;
+    }
+  }
+
+
+/* MARK: Header
+*/
+@property --scroll-x-deg {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 720deg;
+}
+
+header {
+  --scroll-x-deg: calc(100% / 30rem);
+  --scroll-y-deg: calc(100% / 30rem);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--gap);
+  z-index: calc(infinity);
+
+  > a {
+    display: block;
+    height: 3rem;
+
+    @media (prefers-reduced-motion: no-preference) {
+      animation: breathe 5s ease-out infinite normal;
+    }
+
+    div {
+      height: 100%;
+      @media (prefers-reduced-motion: no-preference) {
+        @supports (animation-timeline: scroll()) {
+          animation: rotateX linear;
+          animation-timeline: scroll(root y);
+        }
+      }
+      svg {
+        height: 100%;
+        width: 100%;
+        aspect-ratio: 1.64 / 1;
+        /* @supports (animation-timeline: scroll()) {
+          animation: rotateY linear;
+          animation-timeline: scroll(root x);
+        } */
+      }
+    }
+  }
+
+  nav {
+    word-break: break-all;
+    ul {
+      
+      position: relative;
+      max-width: calc(100vw - 7rem);
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: flex-end;
+      overflow: hidden;
+      gap: 0 var(--gap);
+      list-style: none;
+      max-height: 3rem;
+      /* text-align: right; */
+
+      /* Detect if the menu is overflowed, if so, add a little padding */
+      animation: detect-scroll linear;
+      animation-timeline: scroll(self);
+      --pad-if-can-scroll: var(--can-scroll) 2.3rem;
+      --pad-if-cant-scroll: 0;
+      padding-right: var(--pad-if-can-scroll, var(--pad-if-cant-scroll)); 
+    }
+    button {
+      /* If the menu is overflowed, show the menu button */
+      --display-menu-if-can-scroll: var(--can-scroll) block;
+      --display-menu-if-cant-scroll: none;
+      display: var(--display-menu-if-can-scroll, var(--display-menu-if-cant-scroll));
+
+      position: fixed;
+      background: transparent;
+      color: red;
+      border: 0;
+      padding: 0;
+      right: var(--gap);
+      line-height: 1rem;
+      font-size: 2rem;
+      /* font-weight: bold; */
+      width: 2rem;
+      aspect-ratio: 1/1;
+      
+      overflow: hidden;
+      z-index: 99;
+
+      span {
+        display: none;
+      }
+      &::before {
+        content: '☰';
+      }
+    }
+    a {
+      text-shadow:
+        -1px 1px 1px Canvas,  
+        0 0 .2em Canvas,
+        0 0 .4em Canvas,
+        0 0 .6em Canvas,
+        0 0 .8em Canvas,
+        0 0 1em Canvas;
+      text-transform: capitalize;
+    }
+  }
+  nav.open {
+    position: fixed;
+    inset: var(--gap);
+    overflow-y: scroll;
+    background: red;
+    padding: calc(var(--gap)/2);
+
+    ul {
+      justify-content: flex-start;
+      max-width: calc(100% - 1.6rem);
+      max-height: fit-content;
+      li {
+        order: 2;
+      }
+    }
+
+    button {
+      display: block;
+      color: Canvas;
+      top: 1rem;
+      &::before {
+        content: '☵';
+      }
+    }
+   
+    a {
+      color: Canvas;
+      text-shadow: none;
+    }
+  }
+
+  nav 
+}
+
+/* https://csscade.com/can-you-detect-overflow-with-css/ */
+@keyframes detect-scroll {
+  from,
+  to {
+    --can-scroll: ;
+  }
+}
+
+@keyframes breathe {
+  0% {
+    transform: scale(0.96);
+  }
+  25% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(0.96);
+  }
+  100% {
+    transform: scale(0.96);
+  }
+}
+
+@keyframes rotateX {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(720deg);
+  }
+}
+
+@keyframes rotateY {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(720deg);
+  }
+}
+
+
+/* MARK: Footer
+*/
+footer {
+  display: contents;
+
+  p {
+    padding: 0 var(--gap);
+
+    @media (min-width: 30rem) {
+      position: fixed;
+      bottom: 1rem;
+      left: 1rem;
+      margin: 0;
+      padding: 0;
+    }    
+    text-shadow:
+      -1px 1px 1px Canvas,  
+      0 0 .2em Canvas,
+      0 0 .4em Canvas,
+      0 0 .6em Canvas,
+      0 0 .8em Canvas,
+      0 0 1em Canvas;
+
+    span {
+      display: inline-block;
+      transform-origin: center;
+      transform: rotate(180deg);
+      margin-right: 0.1rem;
+    }
+  }
+}

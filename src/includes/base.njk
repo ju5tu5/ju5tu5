@@ -1,0 +1,41 @@
+<!--#=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##
+    o8o               oooooooo    .                 oooooooo                oooo
+    `"'              dP"""""""  .o8                dP"""""""                `888
+   oooo oooo  oooo  d88888b.  .o888oo oooo  oooo  d88888b.      ooo. .oo.    888
+   `888 `888  `888      `Y88b   888   `888  `888      `Y88b     `888P"Y88b   888
+    888  888   888        ]88   888    888   888        ]88      888   888   888
+    888  888   888  o.   .88P   888 .  888   888  o.   .88P .o.  888   888   888
+    888  `V88V"V8P' `8bd88P'    "888"  `V88V"V8P' `8bd88P'  Y8P o888o o888o o888
+.o. 88P
+`Y888P  >>> Braveaux, reading the source is the first step to enlightenment! <<<
+##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##=##-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ju5tu5.nl — {{ title }}</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Justus Sturkenboom">
+    <meta name="color-scheme" content="dark light">
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:url" content="https://ju5tu5.nl{{ page.url }}">
+
+    <link rel="stylesheet" href="/assets/style/main.css">
+    <link rel="shortcut icon" href="/assets/jsts.svg">
+    <link rel="alternate" type="application/atom+xml" href="/feed.atom">
+    <link rel="canonical" href="https://ju5tu5.nl/">
+    <link rel="me" href="https://github.com/ju5tu5/">
+    <link rel="me" href="https://codeberg.org/ju5tu5/">
+    <link rel="me" href="https://www.linkedin.com/in/ju5tu5/">
+
+    <script src="/assets/script/main.js" defer></script>
+  </head>
+  <body>
+    {% include 'header.njk' %}
+    <main>
+      {{ content | safe }}
+    </main>
+    {% include 'footer.njk' %}
+  </body>
+</html>
