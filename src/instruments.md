@@ -13,6 +13,8 @@ Last week i random shuffled all music in my library and while listening to Less 
 
 It made me wonder if i could build similar distressed skeuomophic interfaces using HTML and CSS. I would like to use CSS form inputs and meters combined with pure CSS, using shadows, gradients, and borders with distressed textures using CSS gradients, blend modes, and SVG filters.
 
+Note: this is hard and will probably take a very long time..
+
 </article>
 
 <form>
@@ -23,7 +25,7 @@ It made me wonder if i could build similar distressed skeuomophic interfaces usi
     </meter>
   </fieldset>
   <fieldset>
-    
+
   </fieldset>
 </form>
 
