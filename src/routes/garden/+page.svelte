@@ -12,7 +12,7 @@
   <p>
     I've got a few things going so you can check out how to work with me on the
     <a href="/man">man page</a> and change the whole layout as you see fit using my
-    <a href="/diwhy">diwhy?</a> experiment. I actually started <a href="/desire">writing</a> small essays
+    <a href="/diwhy">diwhy?</a> experiment. I actually started <a href="/write">writing</a> small essays
     and wonder if i'll keep doing this.
   </p>
 </article>

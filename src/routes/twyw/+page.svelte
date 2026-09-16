@@ -1,6 +1,8 @@
 <article>
   <h2>Four Words: The Web You Want</h2>
 
+  <p>NB: Vasilis asked me to just put this text online, i'm still adding references..</p>
+
   <p>
     The instigator for this essay is Vasilis van Gemert who had the brilliant idea to organise a
     conference called ‘The Web You Want’ at the Amsterdam University of Applied Sciences. Me being
@@ -441,6 +443,7 @@
     </li>
   </ol>
 
+  <hr />
   <p>the/a web you/they/i want/love</p>
 
   <p>the web you want the web they want the web i want</p>
