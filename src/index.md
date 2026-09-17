@@ -11,7 +11,7 @@ You have reached the digital garden of Justus Sturkenboom, Philosophy/ Computer 
 
 ## This website is supposed to be a digital garden...
 
-...but i'm a lousy gardener spending all my time on other projects on [github](https://github.com/ju5tu5/) and since recent times [codeberg](https://codeberg.org/ju5tu5/). Maybe this is exactly what it means to cultivate a digital garden, always pruning, never finished. I'm proud to be a part of the [Digitaal Tuintje webring](https:/digitaaltuintje.nl).
+...but i'm a lousy gardener spending all my time on other projects on [GitHub](https://github.com/ju5tu5/) and since recent times [Codeberg](https://codeberg.org/ju5tu5/). Maybe this is exactly what it means to cultivate a digital garden, always pruning, never finished. I'm proud to be a part of the [Digitaal Tuintje webring](https:/digitaaltuintje.nl).
 
 Although my garden is pretty small, it has been rebuilt a couple of times and of course i'm still not satisfied. I started out using static HTML and CSS, which was very satisfactory but missed some scripting features. I enjoy static but a solid build process and some syntactic sugar would be nice, so i went with [sveltekit](https://svelte.dev/docs/kit/introduction) afterwards. This tickled my framework fascination but deemed to be a total overkill for my small garden, like using a [Fendt 1100 Vario MT](https://www.fendt.com/int/agricultural-machinery/tractors/fendt-1100-vario-mt) in my 5,5x12m back yard, and above all it generated ugly code. So now i'm rebuilding using [11ty](https://www.11ty.dev/) as a static site generator...
 
