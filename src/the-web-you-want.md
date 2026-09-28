@@ -1,11 +1,10 @@
 ---
 title: The Web You Want
 date: 2026-04-17
+tags: article
 ---
 
-<article>
-
-# Four Words: The Web You Want
+## Four Words: The Web You Want
 
 NB: Vasilis asked me to recklessly put this text online, i'm still adding references..
 
@@ -148,8 +147,6 @@ Freud
 Frankfurt
 
 Haraway
-
-</article>
 
 <style>
   @media (min-width: 30rem) {

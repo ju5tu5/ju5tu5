@@ -20,6 +20,7 @@ I'd like to take some time to explain what a digital garden is... so you can exp
 I've got a few things going so you can check out how to work with me on the [man page](/man) and change the whole layout as you see fit using my [diwhy?](/diwhy) experiment. I actually started <a href="/the-web-you-want/">writing</a> small essays and wonder if i'll keep doing this.
 
 </article>
+
 <canvas aria-label="Generative artwork: a cluster of vines slowly growing upward. Refresh or click for a new composition.">
     Your browser does not support canvas. Please imagine vines creeping up the page.
 </canvas>

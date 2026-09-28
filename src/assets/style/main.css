@@ -144,29 +144,37 @@ blockquote p:has(cite) {
   }
 }
 
+
 /* MARK: Main
 */
  main {
-    --colls: 1;
+  --colls: 1;
 
-    position: relative;
-    padding: 5rem var(--gap) 3rem var(--gap);
+  position: relative;
+  padding: 5rem var(--gap) 3rem var(--gap);
 
-    max-width: 100%;
-    min-height: 100vh;
+  max-width: 100%;
+  min-height: 100vh;
 
-    display: grid;
-    grid-template-columns: repeat(var(--colls), 1fr);
-    gap: var(--gap);
+  display: grid;
+  grid-template-columns: repeat(var(--colls), 1fr);
+  gap: var(--gap);
+}
+
+@media (min-width: 30rem) {
+  main {
+    --colls: 12;
+    place-items: center;
+    justify-content: stretch;
   }
+}
 
-  @media (min-width: 30rem) {
-    main {
-      --colls: 12;
-      place-items: center;
-      justify-content: stretch;
-    }
+section.footnotes  {
+  font-size: 0.8em;
+  p {
+    display: inline;
   }
+}
 
 
 /* MARK: Header

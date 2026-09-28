@@ -34,7 +34,13 @@
   <body>
     {% include 'header.njk' %}
     <main>
-      {{ content | safe }}
+      {% if(tags == "article") %}
+        <article>
+          {{ content | safe }}
+        </article>
+      {% else %}
+        {{ content | safe }}
+      {% endif %}
     </main>
     {% include 'footer.njk' %}
   </body>

@@ -1,5 +1,6 @@
 import prettier from "prettier";
 import rssPlugin from "@11ty/eleventy-plugin-rss";
+import footnote_plugin from "markdown-it-footnote";
 
 export default async function (config) {
   config.addPassthroughCopy("./src/assets");
@@ -9,6 +10,7 @@ export default async function (config) {
   config.setIncludesDirectory("includes");
   config.setOutputDirectory("build");
   config.setTemplateFormats(["html", "njk", "md"]);
+  config.amendLibrary("md", (mdLib) => mdLib.use(footnote_plugin));
 
   config.addTransform("prettier", (content, outputPath) =>
     outputPath.endsWith(".html")
