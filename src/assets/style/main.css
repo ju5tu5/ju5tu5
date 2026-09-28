@@ -20,7 +20,9 @@ Following https://www.a11yproject.com/posts/how-to-hide-content/ */
 
 /* MARK: Reset by Josh Comeau
 Following https://www.joshwcomeau.com/css/custom-css-reset/ */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -39,16 +41,29 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
 }
 
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
 }
 
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   overflow-wrap: break-word;
 }
 
@@ -56,11 +71,17 @@ p {
   text-wrap: pretty;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-wrap: balance;
 }
 
-#root, #__next {
+#root,
+#__next {
   isolation: isolate;
 }
 
@@ -81,15 +102,16 @@ html {
 body {
   position: relative;
   /* https://modernfontstacks.com/ */
-  font-family: 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif;
+  font-family:
+    'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif;
   font-weight: normal;
-  
+
   background-color: Canvas;
   color: CanvasText;
   color-scheme: light dark;
 }
 
-.noscroll { 
+.noscroll {
   overflow: hidden;
 }
 
@@ -98,7 +120,8 @@ h2 {
   margin-bottom: var(--gap);
 }
 
-ol, ul {
+ol,
+ul {
   padding: 0;
   list-style-position: inside;
 }
@@ -121,7 +144,12 @@ hr {
   background: CanvasText;
 }
 
-p + h1, p + h2, p + h3, p + h4, p + h5, p + h6 {
+p + h1,
+p + h2,
+p + h3,
+p + h4,
+p + h5,
+p + h6 {
   margin-top: var(--gap);
 }
 
@@ -129,7 +157,7 @@ p + p {
   margin-top: var(--gap);
 }
 
-blockquote p:first-of-type::before{
+blockquote p:first-of-type::before {
   position: relative;
   content: '“';
 }
@@ -137,17 +165,16 @@ blockquote p:nth-last-of-type(2)::after {
   content: '”';
 }
 blockquote p:has(cite) {
-  margin-top: .3em;
-  
+  margin-top: 0.3em;
+
   &::before {
     content: '— ';
   }
 }
 
-
 /* MARK: Main
 */
- main {
+main {
   --colls: 1;
 
   position: relative;
@@ -169,18 +196,17 @@ blockquote p:has(cite) {
   }
 }
 
-section.footnotes  {
+section.footnotes {
   font-size: 0.8em;
   p {
     display: inline;
   }
 }
 
-
 /* MARK: Header
 */
 @property --scroll-x-deg {
-  syntax: "<angle>";
+  syntax: '<angle>';
   inherits: false;
   initial-value: 720deg;
 }
@@ -219,107 +245,110 @@ header {
         height: 100%;
         width: 100%;
         aspect-ratio: 1.64 / 1;
-        /* @supports (animation-timeline: scroll()) {
-          animation: rotateY linear;
-          animation-timeline: scroll(root x);
-        } */
+        /* @media (prefers-reduced-motion: no-preference) {
+          @supports (animation-timeline: scroll()) {
+            animation: rotateY linear;
+            animation-timeline: scroll(root x);
+          } */
       }
     }
   }
+}
 
-  nav {
-    word-break: break-all;
-    ul {
-      
-      position: relative;
-      max-width: calc(100vw - 7rem);
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: flex-end;
-      overflow: hidden;
-      gap: 0 var(--gap);
-      list-style: none;
-      max-height: 3rem;
-      /* text-align: right; */
+nav {
+  word-break: break-all;
 
-      /* Detect if the menu is overflowed, if so, add a little padding */
-      animation: detect-scroll linear;
-      animation-timeline: scroll(self);
-      --pad-if-can-scroll: var(--can-scroll) 2.3rem;
-      --pad-if-cant-scroll: 0;
-      padding-right: var(--pad-if-can-scroll, var(--pad-if-cant-scroll)); 
-    }
-    button {
-      /* If the menu is overflowed, show the menu button */
-      --display-menu-if-can-scroll: var(--can-scroll) block;
-      --display-menu-if-cant-scroll: none;
-      display: var(--display-menu-if-can-scroll, var(--display-menu-if-cant-scroll));
+  ul {
+    position: relative;
+    max-width: calc(100vw - 7rem);
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    overflow: hidden;
+    gap: 0 var(--gap);
+    list-style: none;
+    max-height: 3rem;
 
-      position: fixed;
-      background: transparent;
-      color: red;
-      border: 0;
-      padding: 0;
-      right: var(--gap);
-      line-height: 1rem;
-      font-size: 2rem;
-      /* font-weight: bold; */
-      width: 2rem;
-      aspect-ratio: 1/1;
-      
-      overflow: hidden;
-      z-index: 99;
-
-      span {
-        display: none;
-      }
-      &::before {
-        content: '☰';
-      }
-    }
-    a {
-      text-shadow:
-        -1px 1px 1px Canvas,  
-        0 0 .2em Canvas,
-        0 0 .4em Canvas,
-        0 0 .6em Canvas,
-        0 0 .8em Canvas,
-        0 0 1em Canvas;
-      text-transform: capitalize;
-    }
+    /* Detect if the menu is overflowed, if so, add a little padding */
+    animation: detect-scroll linear;
+    animation-timeline: scroll(self);
+    --pad-if-can-scroll: var(--can-scroll) 2.3rem;
+    --pad-if-cant-scroll: 0;
+    padding-right: var(--pad-if-can-scroll, var(--pad-if-cant-scroll));
   }
-  nav.open {
+
+  button {
+    /* If the menu is overflowed, show the menu button */
+    --display-menu-if-can-scroll: var(--can-scroll) block;
+    --display-menu-if-cant-scroll: none;
+    display: var(
+      --display-menu-if-can-scroll,
+      var(--display-menu-if-cant-scroll)
+    );
+
     position: fixed;
-    inset: var(--gap);
-    overflow-y: scroll;
-    background: red;
-    padding: calc(var(--gap)/2);
+    background: transparent;
+    color: red;
+    border: 0;
+    padding: 0;
+    right: var(--gap);
+    line-height: 1rem;
+    font-size: 2rem;
+    /* font-weight: bold; */
+    width: 2rem;
+    aspect-ratio: 1/1;
 
-    ul {
-      justify-content: flex-start;
-      max-width: calc(100% - 1.6rem);
-      max-height: fit-content;
-      li {
-        order: 2;
-      }
-    }
+    overflow: hidden;
+    z-index: 99;
 
-    button {
-      display: block;
-      color: Canvas;
-      top: 1rem;
-      &::before {
-        content: '☵';
-      }
+    span {
+      display: none;
     }
-   
-    a {
-      color: Canvas;
-      text-shadow: none;
+    &::before {
+      content: '☰';
+    }
+  }
+  a {
+    text-shadow:
+      -1px 1px 1px Canvas,
+      0 0 0.2em Canvas,
+      0 0 0.4em Canvas,
+      0 0 0.6em Canvas,
+      0 0 0.8em Canvas,
+      0 0 1em Canvas;
+    text-transform: capitalize;
+  }
+}
+
+nav.open {
+  position: fixed;
+  inset: var(--gap);
+  overflow-y: scroll;
+  background: red;
+  padding: calc(var(--gap) / 2);
+
+  ul {
+    justify-content: flex-start;
+    max-width: calc(100% - 1.6rem);
+    max-height: fit-content;
+    li {
+      order: 2;
     }
   }
 
-  nav 
+  button {
+    display: block;
+    color: Canvas;
+    top: 1rem;
+    &::before {
+      content: '☵';
+    }
+  }
+
+  a {
+    color: Canvas;
+    text-shadow: none;
+  }
 }
 
 /* https://csscade.com/can-you-detect-overflow-with-css/ */
@@ -363,7 +392,6 @@ header {
   }
 }
 
-
 /* MARK: Footer
 */
 footer {
@@ -378,13 +406,13 @@ footer {
       left: 1rem;
       margin: 0;
       padding: 0;
-    }    
+    }
     text-shadow:
-      -1px 1px 1px Canvas,  
-      0 0 .2em Canvas,
-      0 0 .4em Canvas,
-      0 0 .6em Canvas,
-      0 0 .8em Canvas,
+      -1px 1px 1px Canvas,
+      0 0 0.2em Canvas,
+      0 0 0.4em Canvas,
+      0 0 0.6em Canvas,
+      0 0 0.8em Canvas,
       0 0 1em Canvas;
 
     span {
